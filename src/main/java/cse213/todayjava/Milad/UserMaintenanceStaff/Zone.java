@@ -1,4 +1,4 @@
-package cse213.todayjava.Milad.UserSecurityPersonnel;
+package cse213.todayjava.Milad.UserMaintenanceStaff;
 
 import java.time.LocalDateTime;
 
@@ -20,7 +20,7 @@ public class Zone {
         this.lastCleaned = lastCleaned;
     }
 
-    
+
     public String getZoneId() {
         return zoneId;
     }
