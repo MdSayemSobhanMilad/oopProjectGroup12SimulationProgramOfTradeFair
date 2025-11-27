@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+import javafx.scene.control.*;
+
 public class LoginController
 {
     @javafx.fxml.FXML
@@ -25,10 +27,9 @@ public class LoginController
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (username.equals("maintenance") && password.equals("1234")) {
-            SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/maintenanceDashboard.fxml");
-        }
-        else {
+        if (username.equals("m") && password.equals("1234")) {
+            SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/maintenanceDashboard.fxml", actionEvent);
+        } else {
             label.setText("Username or password do not match");
         }
     }
