@@ -1,6 +1,9 @@
 package cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses;
 
+import cse213.todayjava.SceneSwitcher;
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 
 public class MaintenanceDashboardController
 {
@@ -13,7 +16,8 @@ public class MaintenanceDashboardController
     }
 
     @javafx.fxml.FXML
-    public void logOutOnClick(ActionEvent actionEvent) {
+    public void logOutOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/login.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
