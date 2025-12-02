@@ -8,8 +8,8 @@ public class StallOwner extends User {
     private String stallID;
     private String location;
 
-    public StallOwner(String userid, String userType, String ownerID, String username, String stallID, String location) {
-        super(userid, userType);
+    public StallOwner(String userId, String name, String ownerID, String username, String stallID, String location) {
+        super(userId, name);
         this.ownerID = ownerID;
         this.username = username;
         this.stallID = stallID;

@@ -1,18 +1,17 @@
 package cse213.todayjava.Milad.UserSecurityPersonnel;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Map;
 import cse213.todayjava.User;
 
-public class SecurityPersonnel extends User{
+public class SecurityPersonnel extends User {
     private int personnelID;
     private String name;
     private String zoneAssigned;
     private String shiftTime;
 
-    public SecurityPersonnel(String userid, String userType, int personnelID, String name, String zoneAssigned, String shiftTime) {
-        super(userid, userType);
+    public SecurityPersonnel(String userId, String userType, int personnelID, String name, String zoneAssigned, String shiftTime) {
+        super(userId, name);
         this.personnelID = personnelID;
         this.name = name;
         this.zoneAssigned = zoneAssigned;

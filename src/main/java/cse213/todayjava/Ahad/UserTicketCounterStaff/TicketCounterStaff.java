@@ -7,12 +7,12 @@ public class TicketCounterStaff extends User {
     private String username;
     private String counterID;
 
-    public TicketCounterStaff(String userid, String userType, String staffID, String username, String counterID) {
-        super(userid, userType);
+    // FIXED: Changed userid to userId and added name parameter
+    public TicketCounterStaff(String userId, String name, String staffID, String username, String counterID) {
+        super(userId, name);
         this.staffID = staffID;
         this.username = username;
         this.counterID = counterID;
-
     }
 
     public String getStaffID() {
