@@ -33,6 +33,8 @@ public class LoginController
             SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserSecurityPersonnel/securityPersonnelDashboard.fxml", actionEvent);
         } else if (username.equals("st") && password.equals("1234")){
             SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/stallOwnerDashboard.fxml", actionEvent);
+        }else if (username.equals("me") && password.equals("1234")){
+            SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/user7Goal1.fxml", actionEvent);
         }
         else {
             label.setText("Username or password do not match");

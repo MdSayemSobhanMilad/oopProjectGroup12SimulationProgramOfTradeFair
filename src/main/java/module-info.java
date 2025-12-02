@@ -2,8 +2,7 @@ module cse213.todayjava {
     requires javafx.controls;
     requires javafx.fxml;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 
 
     exports cse213.todayjava;
@@ -27,18 +26,17 @@ module cse213.todayjava {
 
     exports cse213.todayjava.Ahad.UserStallOwner;
     opens cse213.todayjava.Ahad.UserStallOwner to javafx.fxml;
-=======
-    opens cse213.todayjava.Arabi.UserMediaPromoter to javafx.base, javafx.fxml;
-    opens cse213.todayjava to javafx.fxml;
 
-    exports cse213.todayjava;
-    exports cse213.todayjava.Arabi.UserMediaPromoter;
->>>>>>> Stashed changes
-=======
-    opens cse213.todayjava.Arabi.UserMediaPromoter to javafx.base, javafx.fxml;
-    opens cse213.todayjava to javafx.fxml;
+    exports cse213.todayjava.Ahad.UserTicketCounterStaff.ControllerClasses;
+    opens cse213.todayjava.Ahad.UserTicketCounterStaff.ControllerClasses to javafx.fxml;
 
-    exports cse213.todayjava;
     exports cse213.todayjava.Arabi.UserMediaPromoter;
->>>>>>> Stashed changes
+    opens cse213.todayjava.Arabi.UserMediaPromoter to javafx.fxml;
+
+    exports cse213.todayjava.Arabi.UserGovernmentOfficer;
+    opens cse213.todayjava.Arabi.UserGovernmentOfficer to javafx.fxml;
+
+
+
+
 }
