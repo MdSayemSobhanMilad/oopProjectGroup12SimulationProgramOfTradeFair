@@ -1,13 +1,13 @@
 module cse213.todayjava {
     requires javafx.controls;
     requires javafx.fxml;
-<<<<<<< HEAD
 
 
-=======
+
+
     requires java.logging;
     requires javafx.graphics;
->>>>>>> 804e2977a807925c318e6bd8d812f7323a92b81d
+
 
     exports cse213.todayjava;
 
