@@ -1,7 +1,8 @@
 package cse213.todayjava.Rahat;
 
-public class DemoController
-{
+public class DemoController {
     @javafx.fxml.FXML
     public void initialize() {
-    }}
+    }
+
+}
