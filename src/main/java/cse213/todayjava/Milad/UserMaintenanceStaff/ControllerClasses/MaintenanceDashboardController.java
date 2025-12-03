@@ -12,7 +12,8 @@ public class MaintenanceDashboardController
     }
 
     @javafx.fxml.FXML
-    public void repairOnClick(ActionEvent actionEvent) {
+    public void repairOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/repair.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
@@ -21,30 +22,37 @@ public class MaintenanceDashboardController
     }
 
     @javafx.fxml.FXML
-    public void logCompleteOnClick(ActionEvent actionEvent) {
+    public void logCompleteOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/logComplete.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
-    public void restockOnClick(ActionEvent actionEvent) {
+    public void restockOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/restock.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
-    public void completeOnClick(ActionEvent actionEvent) {
+    public void completeOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/dailyTask.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
-    public void graphChartOnClick(ActionEvent actionEvent) {
+    public void graphChartOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/graphChart.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
-    public void cleanOnClick(ActionEvent actionEvent) {
+    public void cleanOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/cleaning.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
-    public void inspectionOnClick(ActionEvent actionEvent) {
+    public void inspectionOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/inspection.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
-    public void reportOnClick(ActionEvent actionEvent) {
+    public void reportOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/report.fxml", actionEvent);
     }
 }

@@ -5,22 +5,22 @@ import java.time.LocalDateTime;
 public class Inventory {
     private String itemId;
     private String itemName;
-    private String category;
+//    private String category;
     private Integer currentStock;
-    private Integer minimumStockLevel;
+//    private Integer minimumStockLevel;
     private String location;
     private LocalDateTime lastRestocked;
 
     public Inventory() {
     }
 
-    public Inventory(String itemId, String itemName, String category, Integer currentStock,
-                     Integer minimumStockLevel, String location) {
+    public Inventory(String itemId, String itemName, Integer currentStock,
+                      String location) {
         this.itemId = itemId;
         this.itemName = itemName;
-        this.category = category;
+
         this.currentStock = currentStock;
-        this.minimumStockLevel = minimumStockLevel;
+
         this.location = location;
         this.lastRestocked = LocalDateTime.now();
     }
@@ -42,13 +42,7 @@ public class Inventory {
         this.itemName = itemName;
     }
 
-    public String getCategory() {
-        return category;
-    }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public Integer getCurrentStock() {
         return currentStock;
@@ -58,13 +52,7 @@ public class Inventory {
         this.currentStock = currentStock;
     }
 
-    public Integer getMinimumStockLevel() {
-        return minimumStockLevel;
-    }
 
-    public void setMinimumStockLevel(Integer minimumStockLevel) {
-        this.minimumStockLevel = minimumStockLevel;
-    }
 
     public String getLocation() {
         return location;
@@ -94,22 +82,20 @@ public class Inventory {
         return currentStock;
     }
 
-    public boolean verifyMinimumStock() {
-        boolean isBelowMinimum = currentStock < minimumStockLevel;
-        if (isBelowMinimum) {
-            System.out.println("ALERT: Item " + itemName + " is below minimum stock level!");
-        }
-        return !isBelowMinimum;
-    }
+//    public boolean verifyMinimumStock() {
+//        boolean isBelowMinimum = currentStock < minimumStockLevel;
+//        if (isBelowMinimum) {
+//            System.out.println("ALERT: Item " + itemName + " is below minimum stock level!");
+//        }
+//        return !isBelowMinimum;
+//    }
 
     @Override
     public String toString() {
         return "Inventory{" +
                 "itemId='" + itemId + '\'' +
                 ", itemName='" + itemName + '\'' +
-                ", category='" + category + '\'' +
                 ", currentStock=" + currentStock +
-                ", minimumStockLevel=" + minimumStockLevel +
                 ", location='" + location + '\'' +
                 ", lastRestocked=" + lastRestocked +
                 '}';
