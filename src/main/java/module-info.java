@@ -1,8 +1,8 @@
 module cse213.todayjava {
     requires javafx.controls;
     requires javafx.fxml;
-
-
+    requires java.logging;
+    requires javafx.graphics;
 
 
     exports cse213.todayjava;
@@ -36,7 +36,8 @@ module cse213.todayjava {
     exports cse213.todayjava.Arabi.UserGovernmentOfficer;
     opens cse213.todayjava.Arabi.UserGovernmentOfficer to javafx.fxml;
 
-
+    exports cse213.todayjava.Rahat.UserVisitor;
+    opens cse213.todayjava.Rahat.UserVisitor to javafx.fxml;
 
 
 }
