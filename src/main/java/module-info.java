@@ -4,7 +4,6 @@ module cse213.todayjava {
 
 
 
-
     exports cse213.todayjava;
 
     opens cse213.todayjava to javafx.fxml;
