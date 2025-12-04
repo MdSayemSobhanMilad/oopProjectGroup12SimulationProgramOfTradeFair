@@ -61,6 +61,8 @@ public class CleaningController implements Initializable {
                 "Completed",
                 "Cancelled"
         );
+
+
     }
 
     @FXML
@@ -74,9 +76,9 @@ public class CleaningController implements Initializable {
         try {
             MaintenanceTask task = new MaintenanceTask();
 
-            task.setTaskId(taskIdTextField.getText().trim());
+            task.setTaskId(taskIdTextField.getText());
             task.setTaskType(tastTypeComboBox.getValue());
-            task.setDescription(descricptionTextField.getText().trim());
+            task.setDescription(descricptionTextField.getText());
             task.setStatus(statusCombobox.getValue());
             task.setReportedTime(reportedTimeDatePicker.getValue());
             task.setCompletedTime(completedTimeDatePicker.getValue());
@@ -123,7 +125,7 @@ public class CleaningController implements Initializable {
             selectedTask.setDescription(descricptionTextField.getText());
             selectedTask.setStatus(statusCombobox.getValue());
 
-            // Update date times
+
             if (reportedTimeDatePicker.getValue() != null) {
                 selectedTask.setReportedTime(reportedTimeDatePicker.getValue());
             }

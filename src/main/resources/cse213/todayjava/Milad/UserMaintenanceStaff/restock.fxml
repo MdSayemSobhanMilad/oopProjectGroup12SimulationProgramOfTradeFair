@@ -46,5 +46,6 @@
                 <TableColumn fx:id="lastRestockColoumn" prefWidth="112.0" text="Last Restock: " />
             </columns>
         </TableView>
+      <Button layoutX="24.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleBack" text="back" />
     </children>
 </AnchorPane>
