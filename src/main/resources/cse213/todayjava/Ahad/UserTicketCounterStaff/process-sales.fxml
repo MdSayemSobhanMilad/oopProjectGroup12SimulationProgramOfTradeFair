@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="699.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Ahad.UserTicketCounterStaff.ControllerClasses.ProcessSalesController">
+   <children>
+      <Label layoutX="236.0" layoutY="14.0" text="Sell Tickets">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="85.0" text="Select Ticket Type :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="ticketTypeComboBox" layoutX="152.0" layoutY="83.0" prefWidth="150.0" />
+      <Label layoutX="44.0" layoutY="135.0" text="Quantity :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="quantityTextField" layoutX="153.0" layoutY="133.0" />
+      <Label layoutX="39.0" layoutY="254.0" text="Price each :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="314.0" text="TOTAL :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="totalTextField" layoutX="152.0" layoutY="312.0" />
+      <TextArea fx:id="priceEachTextArea" layoutX="128.0" layoutY="235.0" prefHeight="59.0" prefWidth="200.0" />
+      <Button layoutX="168.0" layoutY="178.0" mnemonicParsing="false" onAction="#clickOnaction" prefHeight="26.0" prefWidth="51.0" text="click" />
+      <Label layoutX="30.0" layoutY="396.0" text="Ticket Details:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="ticketDetailsTextArea" layoutX="128.0" layoutY="362.0" prefHeight="89.0" prefWidth="200.0" />
+      <Button layoutX="51.0" layoutY="499.0" mnemonicParsing="false" onAction="#confirmCustomerOnaction" text="Confirm with Customer" />
+      <Button layoutX="277.0" layoutY="498.0" mnemonicParsing="false" onAction="#proceedPaymentOnaction" prefHeight="26.0" prefWidth="126.0" text="Proceed to Payment" />
+      <TextArea fx:id="confirmCustomerTextArea" layoutX="13.0" layoutY="532.0" prefHeight="68.0" prefWidth="200.0" />
+      <TextArea fx:id="confirmPaymentTextArea" layoutX="241.0" layoutY="532.0" prefHeight="68.0" prefWidth="200.0" />
+      <Button layoutX="573.0" layoutY="658.0" mnemonicParsing="false" onAction="#BackOnaction" prefHeight="26.0" prefWidth="51.0" text="Back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
