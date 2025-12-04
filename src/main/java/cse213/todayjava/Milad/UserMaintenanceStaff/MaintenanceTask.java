@@ -1,6 +1,7 @@
 package cse213.todayjava.Milad.UserMaintenanceStaff;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 public class MaintenanceTask {
     private String taskId;
@@ -10,14 +11,14 @@ public class MaintenanceTask {
     private String status;
 //    private String reportedBy;
 //    private String assignedTo;
-    private LocalDateTime reportedTime;
-    private LocalDateTime completedTime;
+    private LocalDate reportedTime;
+    private LocalDate completedTime;
 
 
     public MaintenanceTask() {
     }
 
-    public MaintenanceTask(String taskId, String taskType, String description, String status, LocalDateTime reportedTime, LocalDateTime completedTime) {
+    public MaintenanceTask(String taskId, String taskType, String description, String status, LocalDate reportedTime, LocalDate completedTime) {
         this.taskId = taskId;
         this.taskType = taskType;
         this.description = description;
@@ -58,39 +59,38 @@ public class MaintenanceTask {
         this.status = status;
     }
 
-    public LocalDateTime getReportedTime() {
+    public LocalDate getReportedTime() {
         return reportedTime;
     }
 
-    public void setReportedTime(LocalDateTime reportedTime) {
+    public void setReportedTime(LocalDate reportedTime) {
         this.reportedTime = reportedTime;
     }
 
-    public LocalDateTime getCompletedTime() {
+    public LocalDate getCompletedTime() {
         return completedTime;
     }
 
-    public void setCompletedTime(LocalDateTime completedTime) {
+    public void setCompletedTime(LocalDate completedTime) {
         this.completedTime = completedTime;
     }
 
     @Override
     public String toString() {
-        return "MaintenanceTask{" +
+        return
                 "taskId='" + taskId + '\'' +
                 ", taskType='" + taskType + '\'' +
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 ", reportedTime=" + reportedTime +
-                ", completedTime=" + completedTime +
-                '}';
+                ", completedTime=" + completedTime;
     }
 
     // Methods
     public boolean updateStatus(String newStatus) {
         this.status = newStatus;
         if ("COMPLETED".equals(newStatus)) {
-            this.completedTime = LocalDateTime.now();
+            this.completedTime = LocalDate.now();
         }
         System.out.println("Task " + taskId + " status updated to: " + newStatus);
         return true;
