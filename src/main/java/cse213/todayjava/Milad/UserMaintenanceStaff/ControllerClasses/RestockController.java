@@ -1,11 +1,15 @@
 package cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses;
 
 import cse213.todayjava.Milad.UserMaintenanceStaff.Inventory;
+import cse213.todayjava.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RestockController
 {
@@ -34,6 +38,8 @@ public class RestockController
     @javafx.fxml.FXML
     private TableView<Inventory> restockInfoTableView;
 
+    List<Inventory> item = new ArrayList<>();
+
     @javafx.fxml.FXML
     public void initialize() {
         itemComboBox.getItems().addAll(
@@ -59,37 +65,119 @@ public class RestockController
         currentStockColoumn.setCellValueFactory(new PropertyValueFactory<>("currentStock"));
         locationColoumn.setCellValueFactory(new PropertyValueFactory<>("location"));
         lastRestockColoumn.setCellValueFactory(new PropertyValueFactory<>("lastRestocked"));
-
     }
 
     @javafx.fxml.FXML
     public void handleDeleteItem(ActionEvent actionEvent) {
+        Inventory selected = restockInfoTableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            successMessegeLabel.setText("Please select an item to delete.");
+            return;
+        }
+
+        item.remove(selected);
+        restockInfoTableView.getItems().remove(selected);
+
+        successMessegeLabel.setText("Item deleted successfully!");
+
+        handleClearForm(null);
     }
 
     @javafx.fxml.FXML
     public void handleUpdateStock(ActionEvent actionEvent) {
+        Inventory selected = restockInfoTableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            successMessegeLabel.setText("Please select an item to update.");
+            return;
+        }
+
+        if (!validateInputs()) {
+            return;
+        }
+
+        selected.setItemId(itemidTextField.getText());
+        selected.setItemName(itemComboBox.getValue());
+        selected.setCurrentStock(Integer.parseInt(currentStock.getText()));
+        selected.setLocation(locationTextField.getText());
+        selected.setLastRestocked(restockDatePicker.getValue());
+
+        restockInfoTableView.refresh();
+
+        successMessegeLabel.setText("Item updated successfully!");
+
+        handleClearForm(null);
     }
 
     @javafx.fxml.FXML
     public void handleClearForm(ActionEvent actionEvent) {
+        itemComboBox.setValue(null);
+        itemidTextField.clear();
+        locationTextField.clear();
+        currentStock.clear();
+        restockDatePicker.setValue(null);
+        successMessegeLabel.setText("");
     }
 
     @javafx.fxml.FXML
     public void handleLowStockReport(ActionEvent actionEvent) {
+        List<Inventory> lowStockItems = new ArrayList<>();
+
+        for (Inventory i: item){
+            if(i.getCurrentStock() < 10){
+                lowStockItems.add(i);
+            }
+        }
+        restockInfoTableView.getItems().clear();
+        restockInfoTableView.getItems().addAll(lowStockItems);
+
+        successMessegeLabel.setText("Low stock report generated.");
     }
 
     @javafx.fxml.FXML
     public void handleAddRestock(ActionEvent actionEvent) {
+        if (!validateInputs()) {
+            return;
+        }
+
+        Inventory inv = new Inventory(
+                itemidTextField.getText(),
+                itemComboBox.getValue(),
+                Integer.parseInt(currentStock.getText()),
+                locationTextField.getText(),
+                restockDatePicker.getValue()
+        );
+
+        item.add(inv);
+
+        restockInfoTableView.getItems().clear();
+        restockInfoTableView.getItems().addAll(item);
+
+        successMessegeLabel.setText("Item restocked successfully!");
+
+        handleClearForm(null);
     }
 
     @javafx.fxml.FXML
     public void handleLoadItem(ActionEvent actionEvent) {
+        Inventory selected = restockInfoTableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            successMessegeLabel.setText("Please select an item to load.");
+            return;
+        }
+
+        itemidTextField.setText(selected.getItemId());
+        itemComboBox.setValue(selected.getItemName());
+        currentStock.setText(String.valueOf(selected.getCurrentStock()));
+        locationTextField.setText(selected.getLocation());
+        restockDatePicker.setValue(selected.getLastRestocked());
     }
 
     private boolean validateInputs() {
 
         successMessegeLabel.setText("");
-        clearErrorStyles();
 
 
         StringBuilder errors = new StringBuilder();
@@ -131,7 +219,7 @@ public class RestockController
 
         }
 
-        if (errors.length() > 0) {
+        if (!errors.isEmpty()) {
             successMessegeLabel.setText(errors.toString());
 
             return false;
@@ -141,11 +229,24 @@ public class RestockController
     }
 
     private void clearErrorStyles() {
-        itemComboBox.setValue(null);
-        itemidTextField.clear();
-        locationTextField.clear();
-        currentStock.clear();
-        restockDatePicker.setValue(null);
+        itemComboBox.setStyle("");
+        itemidTextField.setStyle("");
+        locationTextField.setStyle("");
+        currentStock.setStyle("");
+        restockDatePicker.setStyle("");
+        successMessegeLabel.setStyle("");
     }
 
+    @javafx.fxml.FXML
+    public void handleBack(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/maintenanceDashboard.fxml", actionEvent);
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
