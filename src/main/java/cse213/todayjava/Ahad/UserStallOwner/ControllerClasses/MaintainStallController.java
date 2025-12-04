@@ -1,7 +1,10 @@
 package cse213.todayjava.Ahad.UserStallOwner.ControllerClasses;
 
+import cse213.todayjava.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 
 public class MaintainStallController
 {
@@ -46,5 +49,10 @@ public class MaintainStallController
 
     @javafx.fxml.FXML
     public void markasFixedOnaction(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void backOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/stallOwnerDashboard.fxml", actionEvent);
     }
 }
