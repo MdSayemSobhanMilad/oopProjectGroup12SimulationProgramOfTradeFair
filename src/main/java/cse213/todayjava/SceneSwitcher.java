@@ -20,11 +20,5 @@ public class SceneSwitcher {
         stage.setScene(scene);
     }
 
-    public static void switchTo(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                HelloApplication.class.getResource(fxml)
-        );
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
+
 }

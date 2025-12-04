@@ -49,4 +49,14 @@ public class StallOwnerDashboardController {
         SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/maintain-stall.fxml", actionEvent);
 
     }
+
+    @javafx.fxml.FXML
+    public void safetySecurityOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/safety-security.fxml", actionEvent);
+    }
+
+    @javafx.fxml.FXML
+    public void businessNetworkingOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/business-networking.fxml", actionEvent);
+    }
 }
