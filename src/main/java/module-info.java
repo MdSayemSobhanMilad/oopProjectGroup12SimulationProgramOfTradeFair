@@ -3,6 +3,8 @@ module cse213.todayjava {
     requires javafx.fxml;
     requires java.logging;
     requires javafx.graphics;
+    requires jdk.jfr;
+    requires java.desktop;
 
 
     exports cse213.todayjava;

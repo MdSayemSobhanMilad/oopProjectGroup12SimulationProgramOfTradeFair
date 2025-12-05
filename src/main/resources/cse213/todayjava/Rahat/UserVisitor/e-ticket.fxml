@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Rahat.UserVisitor.eticketController">
+   <children>
+      <Label layoutX="193.0" prefHeight="31.0" prefWidth="179.0" text="Generate E-Ticket ">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="6.0" layoutY="34.0" prefHeight="22.0" prefWidth="70.0" text="Name" />
+      <Label layoutX="6.0" layoutY="70.0" prefHeight="17.0" prefWidth="70.0" text="Number" />
+      <Label layoutX="6.0" layoutY="105.0" prefHeight="17.0" prefWidth="70.0" text="Event type" />
+      <Label layoutX="300.0" layoutY="36.0" prefHeight="17.0" prefWidth="70.0" text="Ticket type" />
+      <Label layoutX="300.0" layoutY="70.0" prefHeight="17.0" prefWidth="70.0" text="Event date" />
+      <TextField fx:id="NameTextfield" layoutX="76.0" layoutY="32.0" />
+      <TextField fx:id="NumberTextfield" layoutX="76.0" layoutY="66.0" />
+      <ComboBox fx:id="EventtypeCombobox" layoutX="76.0" layoutY="101.0" prefWidth="150.0" />
+      <ComboBox fx:id="TickettypeCombobox" layoutX="380.0" layoutY="32.0" prefWidth="150.0" />
+      <DatePicker fx:id="datepicker" layoutX="373.0" layoutY="66.0" />
+      <Button layoutX="291.0" layoutY="101.0" mnemonicParsing="false" onAction="#GenerateButton" prefHeight="25.0" prefWidth="70.0" text="Generate" />
+      <Button layoutX="405.0" layoutY="101.0" mnemonicParsing="false" onAction="#ShowallButton" prefHeight="25.0" prefWidth="70.0" text="Show All" />
+      <TableView fx:id="tableview" layoutY="137.0" prefHeight="263.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="NameTablecolumn" prefWidth="154.0" text="Name" />
+          <TableColumn fx:id="EventgtypeTablecolumn" prefWidth="155.99996948242188" text="Event type" />
+            <TableColumn fx:id="TickettypeTablecolumn" prefWidth="153.3333740234375" text="Ticket type" />
+            <TableColumn fx:id="EventdateTablecolumn" prefWidth="153.3333740234375" text="Event date" />
+        </columns>
+      </TableView>
+      <Button layoutX="1.0" layoutY="3.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="25.0" prefWidth="64.0" text="Back" />
+   </children>
+</AnchorPane>

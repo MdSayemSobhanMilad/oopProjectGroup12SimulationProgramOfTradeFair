@@ -1,73 +1,104 @@
 package cse213.todayjava.Ahad.UserStallOwner.ControllerClasses;
 
+import cse213.todayjava.Ahad.UserStallOwner.PrepareStall;
 import cse213.todayjava.SceneSwitcher;
-import cse213.todayjava.Ahad.UserStallOwner.ProductPrepare;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.io.IOException;
 
 public class PrepareController {
+    // Text fields from FXML
+    @FXML private TextField stallNameField;
+    @FXML private TextField stallNumberField;
+    @FXML private TextField stallLocationField;
+    @FXML private TextField staffCountField;
+    @FXML private TextField shiftTimeField;
 
-    @javafx.fxml.FXML
-    private TextField stallNameField;
-    @javafx.fxml.FXML
-    private TextField shiftTimeField;
-    @javafx.fxml.FXML
-    private CheckBox lightingCheck;
-    @javafx.fxml.FXML
-    private TextField stallNumberField;
-    @javafx.fxml.FXML
-    private TextArea detailsTextarea;
-    @javafx.fxml.FXML
-    private CheckBox tablesCheck;
-    @javafx.fxml.FXML
-    private Label successAndAllertMessage;
-    @javafx.fxml.FXML
-    private CheckBox powerCheck;
-    @javafx.fxml.FXML
-    private CheckBox shelvesCheck;
-    @javafx.fxml.FXML
-    private TextField staffCountField;
-    @javafx.fxml.FXML
-    private TextField stallLocationField;
+    // Checkboxes from FXML
+    @FXML private CheckBox tablesCheck;
+    @FXML private CheckBox shelvesCheck;
+    @FXML private CheckBox lightingCheck;
+    @FXML private CheckBox powerCheck;
 
-    private ProductPrepare stall = new ProductPrepare();
+    // Text area and label from FXML
+    @FXML private TextArea detailsTextarea;
+    @FXML private Label successAndAllertMessage;
 
-    @javafx.fxml.FXML
+    // Our stall object
+    private PrepareStall stall;
+
+    @FXML
     public void initialize() {
-    }
+        // Create a new stall object when the screen loads
+        stall = new PrepareStall();
 
-    @javafx.fxml.FXML
-    public void submitButton(ActionEvent actionEvent) {
+        // Clear any previous messages
         successAndAllertMessage.setText("");
-
-        String stallName = stallNameField.getText();
-        String stallNumber = stallNumberField.getText();
-        String stallLocation = stallLocationField.getText();
-        String staffCount = staffCountField.getText();
-        String shiftTime = shiftTimeField.getText();
-        boolean tablesReady = tablesCheck.isSelected();
-        boolean shelvesReady = shelvesCheck.isSelected();
-        boolean lightingReady = lightingCheck.isSelected();
-        boolean powerReady = powerCheck.isSelected();
-        String notes = detailsTextarea.getText();
-
-        stall.populateFromForm(stallName, stallNumber, stallLocation,
-                staffCount, shiftTime,
-                tablesReady, shelvesReady, lightingReady, powerReady,
-                notes);
-
-        if (stall.validateForm()) {
-            String summary = stall.generateSummary();
-            detailsTextarea.setText(summary);
-            successAndAllertMessage.setText("Stall is ready for customers!");
-        } else {
-            successAndAllertMessage.setText(stall.getStatusMessage());
-        }
     }
 
-    @javafx.fxml.FXML
-    public void backButton(ActionEvent actionEvent) throws IOException {
-        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/stallOwnerDashboard.fxml", actionEvent);
+    @FXML
+    public void submitButton(ActionEvent actionEvent) {
+        // Step 1: Get all the values from the form
+        String stallName = stallNameField.getText().trim();
+        String stallNumber = stallNumberField.getText().trim();
+        String location = stallLocationField.getText().trim();
+        String staffCountText = staffCountField.getText().trim();
+        String shiftTime = shiftTimeField.getText().trim();
+
+        // Step 2: Check if required fields are filled
+        if (stallName.isEmpty() || stallNumber.isEmpty() || location.isEmpty() ||
+                staffCountText.isEmpty() || shiftTime.isEmpty()) {
+
+            successAndAllertMessage.setText("Please fill all fields!");
+            successAndAllertMessage.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Step 3: Check if staff count is a valid number
+        int staffCount;
+        try {
+            staffCount = Integer.parseInt(staffCountText);
+            if (staffCount <= 0) {
+                successAndAllertMessage.setText("Staff count must be positive!");
+                successAndAllertMessage.setStyle("-fx-text-fill: red;");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            successAndAllertMessage.setText("Enter valid number for staff!");
+            successAndAllertMessage.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Step 4: Save all data to our stall object
+        stall.setStallName(stallName);
+        stall.setStallNumber(stallNumber);
+        stall.setLocation(location);
+        stall.setStaffCount(staffCount);
+        stall.setShiftTime(shiftTime);
+
+        // Save checkbox values
+        stall.setTablesReady(tablesCheck.isSelected());
+        stall.setShelvesOrganized(shelvesCheck.isSelected());
+        stall.setLightingAdequate(lightingCheck.isSelected());
+        stall.setPowerConnected(powerCheck.isSelected());
+
+        // Step 5: Show all details in the text area
+        String allDetails = stall.getAllDetails();
+        detailsTextarea.setText(allDetails);
+
+        // Step 6: Show success message
+        successAndAllertMessage.setText("Stall details submitted successfully!");
+
+    }
+
+    @FXML
+    public void backButton(ActionEvent actionEvent) {
+        try {
+            // Go back to previous screen
+            SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/stallOwnerDashboard.fxml", actionEvent);
+        } catch (Exception e) {
+            successAndAllertMessage.setText("Error: Cannot go back!");
+            successAndAllertMessage.setStyle("-fx-text-fill: red;");
+        }
     }
 }
