@@ -33,7 +33,6 @@
        <Button layoutX="50.0" layoutY="233.0" onAction="#addMaintenanceTask" text="Add Task" />
        <Button layoutX="134.0" layoutY="233.0" onAction="#updateMaintenanceTask" text="Update Task" />
        <Button layoutX="234.0" layoutY="233.0" onAction="#deleteMaintenanceTask" text="Delete Task" />
-       <Button layoutX="334.0" layoutY="233.0" onAction="#loadTaskDetails" text="Load Task" />
        <Button layoutX="418.0" layoutY="233.0" onAction="#filterByStatus" text="Filter by Status" />
        <Button layoutX="526.0" layoutY="233.0" onAction="#clearFilter" text="Clear Filter" />
       <Button layoutX="50.0" layoutY="511.0" mnemonicParsing="false" onAction="#backOnClick" text="back" />

@@ -1,28 +1,32 @@
 package cse213.todayjava.Milad.UserMaintenanceStaff;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class MaintenanceReport {
     private String reportId;
     private String reportType;
-    private LocalDateTime generatedDate;
-    private String timeFrame;
+    private LocalDate generatedDate;
     private String generatedBy;
-    private byte[] reportContent;
+    private String status;
 
+    // Default constructor (REQUIRED for JavaFX TableView)
     public MaintenanceReport() {
-        this.generatedDate = LocalDateTime.now();
+        this.reportId = "";
+        this.reportType = "";
+        this.generatedDate = LocalDate.now();
+        this.generatedBy = "";
+        this.status = "";
     }
 
-    public MaintenanceReport(String reportId, String reportType, String timeFrame, String generatedBy) {
+    public MaintenanceReport(String reportId, String reportType, LocalDate generatedDate, String generatedBy, String status) {
         this.reportId = reportId;
         this.reportType = reportType;
-        this.timeFrame = timeFrame;
+        this.generatedDate = generatedDate;
         this.generatedBy = generatedBy;
-        this.generatedDate = LocalDateTime.now();
+        this.status = status;
     }
 
-    // Getters and Setters
+    // Getters and Setters (MUST be exactly like this)
     public String getReportId() {
         return reportId;
     }
@@ -39,20 +43,12 @@ public class MaintenanceReport {
         this.reportType = reportType;
     }
 
-    public LocalDateTime getGeneratedDate() {
+    public LocalDate getGeneratedDate() {
         return generatedDate;
     }
 
-    public void setGeneratedDate(LocalDateTime generatedDate) {
+    public void setGeneratedDate(LocalDate generatedDate) {
         this.generatedDate = generatedDate;
-    }
-
-    public String getTimeFrame() {
-        return timeFrame;
-    }
-
-    public void setTimeFrame(String timeFrame) {
-        this.timeFrame = timeFrame;
     }
 
     public String getGeneratedBy() {
@@ -63,37 +59,12 @@ public class MaintenanceReport {
         this.generatedBy = generatedBy;
     }
 
-    public byte[] getReportContent() {
-        return reportContent;
+    public String getStatus() {
+        return status;
     }
 
-    public void setReportContent(byte[] reportContent) {
-        this.reportContent = reportContent;
-    }
-
-    // Methods
-    public MaintenanceReport generateReport(ReportParameters parameters) {
-        System.out.println("Generating maintenance report with ID: " + reportId);
-        // Implementation to generate report content
-        this.reportContent = ("Maintenance Report: " + reportType).getBytes();
-        return this;
-    }
-
-    public byte[] previewReport() {
-        System.out.println("Previewing report: " + reportId);
-        return reportContent != null ? reportContent : "Report preview not available".getBytes();
-    }
-
-    public byte[] exportToPDF() {
-        System.out.println("Exporting report " + reportId + " to PDF");
-        // Implementation for PDF export
-        return reportContent != null ? reportContent : "PDF export content".getBytes();
-    }
-
-    public boolean printReport() {
-        System.out.println("Printing report: " + reportId);
-        // Implementation for printing logic
-        return true;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
@@ -102,8 +73,8 @@ public class MaintenanceReport {
                 "reportId='" + reportId + '\'' +
                 ", reportType='" + reportType + '\'' +
                 ", generatedDate=" + generatedDate +
-                ", timeFrame='" + timeFrame + '\'' +
                 ", generatedBy='" + generatedBy + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

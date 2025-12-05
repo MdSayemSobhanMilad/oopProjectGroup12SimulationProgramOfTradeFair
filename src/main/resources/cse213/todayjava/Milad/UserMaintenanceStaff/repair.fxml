@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses.RepairController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses.RepairController">
+    <children>
+        <TableView fx:id="repairTV" layoutX="43.0" layoutY="100.0" prefHeight="200.0" prefWidth="609.0">
+            <columns>
+                <TableColumn fx:id="repairIDTC" prefWidth="119.0" text="Report ID" />
+                <TableColumn fx:id="reportTypeTC" prefWidth="135.0" text="Report Type" />
+                <TableColumn fx:id="generateDateTC" prefWidth="129.0" text="Generate Date" />
+                <TableColumn fx:id="generateByTC" prefWidth="120.0" text="Generate By" />
+                <TableColumn fx:id="statusTC" prefWidth="105.0" text="Status" />
+            </columns>
+        </TableView>
+        <Label layoutX="273.0" layoutY="14.0" text="Repair Duty">
+            <font>
+                <Font name="Book Antiqua Italic" size="29.0" />
+            </font>
+        </Label>
+        <Button layoutX="600.0" layoutY="64.0" mnemonicParsing="false" onAction="#ReloadClick" text="Reload" />
+        <Button layoutX="43.0" layoutY="64.0" mnemonicParsing="false" onAction="#backClick" text="Back" />
+        <RadioButton layoutX="43.0" layoutY="320.0" mnemonicParsing="false" onAction="#doneRepairingRB" text="DONE REPAIRING" />
+        <Button layoutX="526.0" layoutY="316.0" mnemonicParsing="false" onAction="#loadDoneWorksClick" text="Load The Work done" />
+    </children>
 </AnchorPane>

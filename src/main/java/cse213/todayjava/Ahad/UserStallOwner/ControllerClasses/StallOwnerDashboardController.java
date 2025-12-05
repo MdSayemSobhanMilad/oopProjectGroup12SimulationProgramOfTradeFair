@@ -5,8 +5,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-public class StallOwnerDashboardController
-{
+public class StallOwnerDashboardController {
     @javafx.fxml.FXML
     public void initialize() {
     }
@@ -17,4 +16,47 @@ public class StallOwnerDashboardController
 
     }
 
+    @javafx.fxml.FXML
+    public void prepareStall(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/prepare-stall.fxml", actionEvent);
+    }
+
+    @javafx.fxml.FXML
+    public void manageProductOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/manage-products.fxml", actionEvent);
+
+    }
+
+    @javafx.fxml.FXML
+    public void productInfoOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/product-information.fxml", actionEvent);
+    }
+
+    @javafx.fxml.FXML
+    public void customerDiscountOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/apply-discounts.fxml", actionEvent);
+    }
+
+    @javafx.fxml.FXML
+    public void salesTransactionsOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/sales-reporting.fxml", actionEvent);
+
+
+    }
+
+    @javafx.fxml.FXML
+    public void maintainStallOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/maintain-stall.fxml", actionEvent);
+
+    }
+
+    @javafx.fxml.FXML
+    public void safetySecurityOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/safety-security.fxml", actionEvent);
+    }
+
+    @javafx.fxml.FXML
+    public void businessNetworkingOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/business-networking.fxml", actionEvent);
+    }
 }
