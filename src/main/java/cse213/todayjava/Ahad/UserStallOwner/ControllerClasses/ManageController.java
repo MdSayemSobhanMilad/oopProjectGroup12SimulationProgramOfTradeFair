@@ -52,7 +52,7 @@ public class ManageController {
             quantityField.clear();
 
         } catch (NumberFormatException e) {
-            // Do nothing
+
         }
     }
 
@@ -80,7 +80,7 @@ public class ManageController {
             productTable.refresh();
 
         } catch (NumberFormatException e) {
-            // Do nothing
+
         }
     }
 

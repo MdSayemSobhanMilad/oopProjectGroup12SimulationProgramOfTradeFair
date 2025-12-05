@@ -1,227 +1,341 @@
 package cse213.todayjava.Ahad.UserStallOwner.ControllerClasses;
 
-import cse213.todayjava.Ahad.UserStallOwner.StallMaintain;
-import cse213.todayjava.SceneSwitcher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.stage.Stage;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import java.util.Random;
 
 public class MaintainStallController {
-    // FXML elements - Daily Checklist
+
+
     @FXML private CheckBox powerSupplayWorkingCheckBox;
     @FXML private CheckBox lightningFunctionalCheckBox;
     @FXML private CheckBox equipmentCleanCheckBox;
     @FXML private CheckBox safetyEquipmentOkCheckBox;
 
-    // FXML elements - Report Issue
+
     @FXML private ComboBox<String> issueTypeComboBox;
     @FXML private TextArea isseTypeTextArea;
 
-    // FXML elements - Maintenance Status
-    @FXML private TableView<StallMaintain> tableView;
-    @FXML private TableColumn<StallMaintain, String> ticketTableView;
-    @FXML private TableColumn<StallMaintain, String> issueTableView;
-    @FXML private TableColumn<StallMaintain, String> assigntoTableView;
-    @FXML private TableColumn<StallMaintain, String> statusTableView;
 
-    // FXML elements - Last Fixed
+    @FXML private TableView<TicketData> tableView;
+    @FXML private TableColumn<TicketData, String> ticketTableView;
+    @FXML private TableColumn<TicketData, String> issueTableView;
+    @FXML private TableColumn<TicketData, String> assigntoTableView;
+    @FXML private TableColumn<TicketData, String> statusTableView;
+
     @FXML private TextField lastFixedField;
     @FXML private TextArea markAsFixedTextArea;
 
-    // List to hold maintenance tickets
-    private ObservableList<StallMaintain> ticketList;
 
-    // Counter for ticket IDs
-    private int ticketCounter = 1;
+    private ObservableList<TicketData> ticketList;
+    private Random random = new Random();
+    private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+
+    public static class TicketData {
+        private String ticketId;
+        private String issueType;
+        private String description;
+        private String assignedTo;
+        private String status;
+        private LocalDateTime reportedDate;
+        private LocalDateTime fixedDate;
+        private String stallId;
+
+        public TicketData() {}
+
+        public TicketData(String ticketId, String issueType, String description,
+                          String assignedTo, String status, String stallId) {
+            this.ticketId = ticketId;
+            this.issueType = issueType;
+            this.description = description;
+            this.assignedTo = assignedTo;
+            this.status = status;
+            this.stallId = stallId;
+            this.reportedDate = LocalDateTime.now();
+        }
+
+
+        public String getTicketId() { return ticketId; }
+        public String getIssueType() { return issueType; }
+        public String getDescription() { return description; }
+        public String getAssignedTo() { return assignedTo; }
+        public String getStatus() { return status; }
+        public LocalDateTime getReportedDate() { return reportedDate; }
+        public LocalDateTime getFixedDate() { return fixedDate; }
+        public String getStallId() { return stallId; }
+
+
+        public void setTicketId(String ticketId) { this.ticketId = ticketId; }
+        public void setIssueType(String issueType) { this.issueType = issueType; }
+        public void setDescription(String description) { this.description = description; }
+        public void setAssignedTo(String assignedTo) { this.assignedTo = assignedTo; }
+        public void setStatus(String status) { this.status = status; }
+        public void setFixedDate(LocalDateTime fixedDate) { this.fixedDate = fixedDate; }
+
+        @Override
+        public String toString() {
+            return ticketId + " - " + issueType;
+        }
+    }
 
     @FXML
     public void initialize() {
-        // Create list for tickets
+
         ticketList = FXCollections.observableArrayList();
 
-        // Connect table to our list
-        tableView.setItems(ticketList);
 
-        // Setup table columns
-        setupTableColumns();
+        issueTypeComboBox.setItems(FXCollections.observableArrayList(
+                "Electrical Issue", "Plumbing Issue", "Equipment Failure",
+                "Structural Damage", "Safety Hazard", "Cleaning Required", "Other"
+        ));
 
-        // Setup issue types dropdown
-        setupIssueTypes();
 
-        // Add some sample tickets
-        addSampleTickets();
+        setupTable();
 
-        // Clear text areas
-        isseTypeTextArea.clear();
-        markAsFixedTextArea.clear();
-        lastFixedField.clear();
+
+        loadInitialData();
     }
 
-    private void setupTableColumns() {
-        // Connect each column to StallMaintain properties
+    private void setupTable() {
         ticketTableView.setCellValueFactory(new PropertyValueFactory<>("ticketId"));
-        issueTableView.setCellValueFactory(new PropertyValueFactory<>("issue"));
+        issueTableView.setCellValueFactory(new PropertyValueFactory<>("issueType"));
         assigntoTableView.setCellValueFactory(new PropertyValueFactory<>("assignedTo"));
         statusTableView.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        tableView.setItems(ticketList);
     }
 
-    private void setupIssueTypes() {
-        // Add issue types to dropdown
-        issueTypeComboBox.getItems().addAll(
-                "Electrical Issue",
-                "Lighting Problem",
-                "Equipment Failure",
-                "Safety Concern",
-                "Cleaning Required",
-                "Structural Damage",
-                "Plumbing Issue",
-                "Other"
-        );
-    }
+    private void loadInitialData() {
 
-    private void addSampleTickets() {
-        // Add some sample maintenance tickets
-        ticketList.add(new StallMaintain("T001", "Light bulb needs replacement", "Maintenance Team", "Pending"));
-        ticketList.add(new StallMaintain("T002", "Power outlet not working", "Electrician", "In Progress"));
-        ticketList.add(new StallMaintain("T003", "Clean equipment needed", "Cleaning Staff", "Completed"));
+        ticketList.add(new TicketData("TKT-001", "Electrical Issue",
+                "Power outlet not working", "Maintenance Team A", "In Progress", "STALL-001"));
+        ticketList.add(new TicketData("TKT-002", "Plumbing Issue",
+                "Water leakage", "Plumber", "Pending", "STALL-001"));
+
+
+        lastFixedField.setText(LocalDateTime.now().minusDays(1).format(dateFormatter));
     }
 
     @FXML
-    public void completeChecklistOnaction(ActionEvent actionEvent) {
-        // Check which checklist items are completed
-        boolean powerOk = powerSupplayWorkingCheckBox.isSelected();
-        boolean lightingOk = lightningFunctionalCheckBox.isSelected();
-        boolean equipmentOk = equipmentCleanCheckBox.isSelected();
-        boolean safetyOk = safetyEquipmentOkCheckBox.isSelected();
+    private void completeChecklistOnaction(ActionEvent event) {
+        boolean allChecked = powerSupplayWorkingCheckBox.isSelected() &&
+                lightningFunctionalCheckBox.isSelected() &&
+                equipmentCleanCheckBox.isSelected() &&
+                safetyEquipmentOkCheckBox.isSelected();
 
-        // Create checklist summary
-        StringBuilder checklistSummary = new StringBuilder();
-        checklistSummary.append("=== DAILY CHECKLIST SUMMARY ===\n");
-        checklistSummary.append("══════════════════════════════\n\n");
+        if (allChecked) {
 
-        checklistSummary.append("1. Power Supply: " + (powerOk ? "✓ OK" : "✗ NEEDS CHECK") + "\n");
-        checklistSummary.append("2. Lighting: " + (lightingOk ? "✓ OK" : "✗ NEEDS CHECK") + "\n");
-        checklistSummary.append("3. Equipment Clean: " + (equipmentOk ? "✓ OK" : "✗ NEEDS CHECK") + "\n");
-        checklistSummary.append("4. Safety Equipment: " + (safetyOk ? "✓ OK" : "✗ NEEDS CHECK") + "\n\n");
+            TicketData checklist = new TicketData(
+                    "CHK-" + generateId(),
+                    "Daily Checklist",
+                    "All daily checks completed successfully",
+                    "Self",
+                    "Completed",
+                    "STALL-001"
+            );
+            checklist.setFixedDate(LocalDateTime.now());
+            ticketList.add(checklist);
 
-        // Count completed items
-        int completedCount = 0;
-        if (powerOk) completedCount++;
-        if (lightingOk) completedCount++;
-        if (equipmentOk) completedCount++;
-        if (safetyOk) completedCount++;
 
-        checklistSummary.append("Completed: " + completedCount + "/4 items\n");
+            lastFixedField.setText(LocalDateTime.now().format(dateFormatter));
 
-        if (completedCount == 4) {
-            checklistSummary.append("✅ ALL CHECKS COMPLETE - STALL READY ✅");
+
+            resetCheckboxes();
+
+            showAlert("Success", "Daily checklist completed!", Alert.AlertType.INFORMATION);
         } else {
-            checklistSummary.append("⚠️ ATTENTION NEEDED: " + (4 - completedCount) + " item(s) to check");
+            showAlert("Incomplete", "Please check all items first.", Alert.AlertType.WARNING);
         }
-
-        // Show in the "Mark as Fixed" text area
-        markAsFixedTextArea.setText(checklistSummary.toString());
-
-        // Show message
-        showMessage("Daily checklist completed!\n" + completedCount + "/4 items checked", "green");
     }
 
     @FXML
-    public void submitTicketOnaction(ActionEvent actionEvent) {
-        // Get issue type and description
+    private void submitTicketOnaction(ActionEvent event) {
         String issueType = issueTypeComboBox.getValue();
-        String issueDescription = isseTypeTextArea.getText().trim();
+        String description = isseTypeTextArea.getText().trim();
 
-        // Check if both fields are filled
-        if (issueType == null || issueDescription.isEmpty()) {
-            showMessage("Please select issue type and describe the problem!", "red");
+        if (issueType == null || issueType.isEmpty()) {
+            showAlert("Error", "Select an issue type.", Alert.AlertType.WARNING);
             return;
         }
 
-        // Create new ticket ID
-        String ticketId = "T" + String.format("%03d", ticketCounter);
-        ticketCounter++;
+        if (description.isEmpty()) {
+            showAlert("Error", "Enter issue description.", Alert.AlertType.WARNING);
+            return;
+        }
 
-        // Create new maintenance ticket
-        StallMaintain newTicket = new StallMaintain(
-                ticketId,
-                issueType + ": " + issueDescription,
-                "Not Assigned Yet",
-                "New"
+
+        TicketData newTicket = new TicketData(
+                "TKT-" + generateId(),
+                issueType,
+                description,
+                "Not Assigned",
+                "Pending",
+                "STALL-001"
         );
 
-        // Add to table
         ticketList.add(newTicket);
 
-        // Clear the form
+
         issueTypeComboBox.setValue(null);
         isseTypeTextArea.clear();
 
-        // Show success message
-        showMessage("Ticket #" + ticketId + " submitted successfully!", "green");
+        showAlert("Submitted", "Ticket #" + newTicket.getTicketId() + " created.", Alert.AlertType.INFORMATION);
     }
 
     @FXML
-    public void markasFixedOnaction(ActionEvent actionEvent) {
-        // Get selected ticket from table
-        StallMaintain selectedTicket = tableView.getSelectionModel().getSelectedItem();
+    private void markasFixedOnaction(ActionEvent event) {
+        TicketData selected = tableView.getSelectionModel().getSelectedItem();
 
-        if (selectedTicket == null) {
-            showMessage("Please select a ticket from the table first!", "red");
+        if (selected == null) {
+            showAlert("Error", "Select a ticket first.", Alert.AlertType.WARNING);
             return;
         }
 
-        // Get what was last fixed
-        String lastFixed = lastFixedField.getText().trim();
+        String notes = markAsFixedTextArea.getText().trim();
 
-        if (lastFixed.isEmpty()) {
-            showMessage("Please enter what was fixed in 'Last Fixed' field!", "red");
-            return;
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Confirm Fix");
+        confirm.setHeaderText("Mark as Fixed");
+        confirm.setContentText("Mark ticket " + selected.getTicketId() + " as fixed?");
+
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+
+            selected.setStatus("Fixed");
+            selected.setFixedDate(LocalDateTime.now());
+
+            if (!notes.isEmpty()) {
+                selected.setDescription(selected.getDescription() + "\nFix Notes: " + notes);
+            }
+
+
+            tableView.refresh();
+            lastFixedField.setText(LocalDateTime.now().format(dateFormatter));
+            markAsFixedTextArea.clear();
+
+            showAlert("Fixed", "Ticket marked as fixed.", Alert.AlertType.INFORMATION);
         }
-
-        // Update ticket status
-        selectedTicket.setStatus("Fixed");
-
-        // Refresh table
-        tableView.refresh();
-
-        // Create fixed report
-        String fixedReport = "=== MAINTENANCE COMPLETED ===\n";
-        fixedReport += "════════════════════════════\n\n";
-        fixedReport += "Ticket ID: " + selectedTicket.getTicketId() + "\n";
-        fixedReport += "Issue: " + selectedTicket.getIssue() + "\n";
-        fixedReport += "Assigned To: " + selectedTicket.getAssignedTo() + "\n";
-        fixedReport += "Status: ✅ FIXED ✅\n\n";
-        fixedReport += "Work Done: " + lastFixed + "\n\n";
-        fixedReport += "Date Fixed: Today\n";
-        fixedReport += "Maintenance Complete!";
-
-        // Show in text area
-        markAsFixedTextArea.setText(fixedReport);
-
-        // Clear last fixed field
-        lastFixedField.clear();
-
-        showMessage("Ticket #" + selectedTicket.getTicketId() + " marked as fixed!", "green");
     }
 
     @FXML
-    public void backOnaction(ActionEvent actionEvent) throws IOException {
-        // Go back to dashboard
-        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/stallOwnerDashboard.fxml", actionEvent);
+    private void backOnaction(ActionEvent event) {
+        try {
+
+            Node source = (Node) event.getSource();
+            Stage currentStage = (Stage) source.getScene().getWindow();
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/cse213/todayjava/Ahad/UserStallOwner/StallOwnerDashboard.fxml"
+            ));
+
+            Parent root = loader.load();
+
+
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Navigation Error",
+                    "Cannot load dashboard.\n" +
+                            "Make sure StallOwnerDashboard.fxml exists in the correct location.\n" +
+                            "Error: " + e.getMessage(),
+                    Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Navigation failed: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
-    private void showMessage(String message, String color) {
-        // Create an alert to show messages
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Stall Maintenance");
+
+    private void backOnactionAlternative(ActionEvent event) {
+        try {
+
+            String[] pathsToTry = {
+                    "/cse213/todayjava/Ahad/UserStallOwner/StallOwnerDashboard.fxml",
+                    "/StallOwnerDashboard.fxml",
+                    "../StallOwnerDashboard.fxml",
+                    "StallOwnerDashboard.fxml"
+            };
+
+            FXMLLoader loader = null;
+            Parent root = null;
+
+
+            for (String path : pathsToTry) {
+                try {
+                    System.out.println("Trying path: " + path);
+                    loader = new FXMLLoader(getClass().getResource(path));
+                    root = loader.load();
+                    System.out.println("Success with path: " + path);
+                    break;
+                } catch (Exception ex) {
+                    System.out.println("Failed with path: " + path);
+                    continue;
+                }
+            }
+
+            if (root != null) {
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+
+                showAlert("Info",
+                        "Dashboard not found. Closing window.\n" +
+                                "Please check your FXML file location.",
+                        Alert.AlertType.INFORMATION);
+
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Navigation failed: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    private void resetCheckboxes() {
+        powerSupplayWorkingCheckBox.setSelected(false);
+        lightningFunctionalCheckBox.setSelected(false);
+        equipmentCleanCheckBox.setSelected(false);
+        safetyEquipmentOkCheckBox.setSelected(false);
+    }
+
+    private String generateId() {
+        return String.format("%03d", random.nextInt(1000));
+    }
+
+    private void showAlert(String title, String message, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+
+    public ObservableList<TicketData> getTicketList() {
+        return ticketList;
     }
 }

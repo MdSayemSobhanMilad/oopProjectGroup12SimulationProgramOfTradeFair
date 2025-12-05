@@ -12,42 +12,42 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 
 public class ProductInformationController {
-    // FXML elements
+
     @FXML private TextField productIdField;
     @FXML private TableView<InformationProduct> tableView;
     @FXML private TextArea featuresArea;
     @FXML private TextArea inquiryNotesField;
 
-    // Table columns
+
     @FXML private TableColumn<InformationProduct, String> productNameView;
     @FXML private TableColumn<InformationProduct, String> priceView;
     @FXML private TableColumn<InformationProduct, String> categoryView;
     @FXML private TableColumn<InformationProduct, String> descriptionView;
     @FXML private TableColumn<InformationProduct, String> stockStatusView;
 
-    // List to hold products for the table
+
     private ObservableList<InformationProduct> productList;
 
-    // Store the current product being viewed
+
     private InformationProduct currentProduct;
 
     @FXML
     public void initialize() {
-        // Create an empty list for products
+
         productList = FXCollections.observableArrayList();
 
-        // Connect the table to our list
+
         tableView.setItems(productList);
 
-        // Setup table columns
+
         setupTableColumns();
 
-        // Clear any initial data
+
         clearAllFields();
     }
 
     private void setupTableColumns() {
-        // Tell each column which property to show from InformationProduct
+
         productNameView.setCellValueFactory(new PropertyValueFactory<>("productName"));
         priceView.setCellValueFactory(new PropertyValueFactory<>("priceString"));
         categoryView.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -57,28 +57,28 @@ public class ProductInformationController {
 
     @FXML
     public void searchProductOnaction(ActionEvent actionEvent) {
-        // Get the product ID entered by user
+
         String productId = productIdField.getText().trim();
 
-        // Check if user entered something
+
         if (productId.isEmpty()) {
             return;
         }
 
-        // Clear previous search results
+
         productList.clear();
         featuresArea.clear();
         currentProduct = null;
 
-        // Search for product based on ID
+
         InformationProduct foundProduct = findProductById(productId);
 
         if (foundProduct != null) {
-            // Add found product to table
+
             productList.add(foundProduct);
             currentProduct = foundProduct;
 
-            // Show product features
+
             featuresArea.setText(foundProduct.getFeatures());
 
 
@@ -113,26 +113,26 @@ public class ProductInformationController {
                     "Hardcover edition\nIllustrated pages\nCollector's edition\nGift box included");
         }
 
-        // If no product matches the ID
+
         return null;
     }
 
     @FXML
     public void saveInquiryOnaction(ActionEvent actionEvent) {
-        // Get the inquiry notes
+
         String inquiry = inquiryNotesField.getText().trim();
 
-        // Check if there's something to save
+
         if (inquiry.isEmpty()) {
             return;
         }
 
-        // Check if a product is selected
+
         if (currentProduct == null) {
             return;
         }
 
-        // Create inquiry summary
+
         String summary = "=== INQUIRY SAVED ===\n\n";
         summary += "Product: " + currentProduct.getProductName() + "\n";
         summary += "Inquiry Date: Today\n";
@@ -140,10 +140,10 @@ public class ProductInformationController {
         summary += "Inquiry saved successfully!";
 
 
-        // Clear the inquiry field
+
         inquiryNotesField.clear();
 
-        // Optionally, you could show the summary in a dialog
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Inquiry Saved");
         alert.setHeaderText("Customer inquiry has been saved");
@@ -154,7 +154,7 @@ public class ProductInformationController {
 
     @FXML
     public void backOnaction(ActionEvent actionEvent) throws IOException {
-        // Go back to dashboard
+
         SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/stallOwnerDashboard.fxml", actionEvent);
     }
 
@@ -166,7 +166,7 @@ public class ProductInformationController {
     }
 
     private void showMessage(String message, String color) {
-        // Create an alert to show messages
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Product Information");
         alert.setHeaderText(null);
