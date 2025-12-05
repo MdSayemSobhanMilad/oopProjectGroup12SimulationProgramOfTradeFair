@@ -1,9 +1,10 @@
 package cse213.todayjava.Milad.UserMaintenanceStaff;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
-public class RoutineInspection {
+public class RoutineInspection implements Serializable {
     private String inspectionId;
     private String equipmentId;
     private String inspectedBy;
@@ -73,13 +74,11 @@ public class RoutineInspection {
 
     @Override
     public String toString() {
-        return "RoutineInspection{" +
-                "inspectionId='" + inspectionId + '\'' +
-                ", equipmentId='" + equipmentId + '\'' +
-                ", inspectedBy='" + inspectedBy + '\'' +
-                ", inspectionDate=" + inspectionDate +
-                ", status='" + status + '\'' +
-                ", issuesFound='" + issuesFound + '\'' +
-                '}';
+        return "inspectionId = " + inspectionId +
+                ", equipmentId = " + equipmentId +
+                ", inspectedBy = " + inspectedBy +
+                ", inspectionDate = " + inspectionDate +
+                ", status = " + status +
+                ", issuesFound = " + issuesFound;
     }
 }
