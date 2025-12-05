@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Arabi.UserMediaPromoter.shareFairPromotionsControllerClass">
+   <children>
+      <Label layoutX="209.0" layoutY="33.0" text="Share fair promotions">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="60.0" layoutY="250.0" mnemonicParsing="false" onAction="#uploadMediaOnClick" text="Upload Media" />
+      <Button layoutX="415.0" layoutY="243.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
+      <DatePicker fx:id="promotionDatePicker" layoutX="162.0" layoutY="76.0" />
+      <Label layoutX="53.0" layoutY="80.0" prefHeight="17.0" prefWidth="91.0" text="Promotion Date:" />
+      <Label layoutX="53.0" layoutY="135.0" prefHeight="17.0" prefWidth="105.0" text="Promotion Status:" />
+      <TextArea fx:id="promotionStatusTextArea" layoutX="162.0" layoutY="115.0" prefHeight="97.0" prefWidth="200.0" />
+      <Label fx:id="statusSectionLabel" layoutX="444.0" layoutY="155.0" text="Status Section" />
+   </children>
+</AnchorPane>

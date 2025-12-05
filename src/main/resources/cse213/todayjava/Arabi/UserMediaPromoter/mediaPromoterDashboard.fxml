@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Arabi.UserMediaPromoter.mediaPromoterDashboardControllerClass">
+   <children>
+      <Button layoutX="43.0" layoutY="154.0" mnemonicParsing="false" onAction="#postNewsAndAnnouncemenstOnClick" text="Post news and announcements" />
+      <Button layoutX="474.0" layoutY="386.0" mnemonicParsing="false" onAction="#logOutOnClick" text="Log out" />
+      <Button layoutX="43.0" layoutY="316.0" mnemonicParsing="false" onAction="#manageAdvertisementsOnClick" text="Manage advertisements" />
+      <Button layoutX="43.0" layoutY="264.0" mnemonicParsing="false" onAction="#uploadPhotosOnClick" text="Upload photos" />
+      <Button layoutX="43.0" layoutY="214.0" mnemonicParsing="false" onAction="#shareFairPromotionsOnClick" text="Share fair promotions" />
+      <Button layoutX="387.0" layoutY="316.0" mnemonicParsing="false" onAction="#publishDailyHighlightsOnClick" text="Publish daily highlights" />
+      <Button layoutX="387.0" layoutY="264.0" mnemonicParsing="false" onAction="#coordinateWithSecurityOnClick" prefHeight="25.0" prefWidth="150.0" text="Coordinate With Security" />
+      <Button layoutX="387.0" layoutY="214.0" mnemonicParsing="false" onAction="#promoteSponsorContentOnClick" text="Promote sponsor content" />
+      <Button layoutX="387.0" layoutY="154.0" mnemonicParsing="false" onAction="#trackVisitorEngagementsOnClick" text="Track visitor engagement" />
+      <Label layoutX="184.0" layoutY="37.0" prefHeight="39.0" prefWidth="263.0" text="Media Promoter Dashboard" textFill="#121111">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

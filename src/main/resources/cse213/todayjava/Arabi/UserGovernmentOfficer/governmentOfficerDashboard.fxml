@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Arabi.UserGovernmentOfficer.governmentOfficerDashboardControllerClass">
+   <children>
+      <Label layoutX="175.0" layoutY="32.0" prefHeight="32.0" prefWidth="268.0" text="Government Officer Dashboard">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button layoutX="44.0" layoutY="84.0" mnemonicParsing="false" onAction="#inspectExhibitorLicensesOnClick" text="Inspect exhibitor licenses" />
+      <Button layoutX="417.0" layoutY="323.0" mnemonicParsing="false" onAction="#logOutOnClick" text="Log Out" />
+      <Button layoutX="358.0" layoutY="243.0" mnemonicParsing="false" onAction="#generateComplianceReportsOnClick" text="Generate compliance reports" />
+      <Button layoutX="358.0" layoutY="200.0" mnemonicParsing="false" onAction="#approveHealthAndSafetyChecksOnClick" text="Approve health and safety checks" />
+      <Button layoutX="358.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleExhibitorComplaintsOnClick" text="Handle Exhibitor Complaints" />
+      <Button layoutX="358.0" layoutY="97.0" mnemonicParsing="false" onAction="#monitorPolicyComplianceOnClick" text="Monitor Policy Compliance" />
+      <Button layoutX="44.0" layoutY="243.0" mnemonicParsing="false" onAction="#monitorTaxCollectionOnClick" text="Monitor tax collection" />
+      <Button layoutX="44.0" layoutY="200.0" mnemonicParsing="false" onAction="#ensureFoodSafetyOnClick" text="Ensure food safety" />
+      <Button layoutX="44.0" layoutY="135.0" mnemonicParsing="false" onAction="#verifyProductComplianceOnClick" text="Verify product compliance" />
+   </children>
+</AnchorPane>

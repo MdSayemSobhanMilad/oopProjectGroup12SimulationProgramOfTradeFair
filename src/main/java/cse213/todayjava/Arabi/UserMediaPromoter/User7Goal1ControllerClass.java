@@ -87,4 +87,8 @@ public class User7Goal1ControllerClass implements Initializable {
         descriptionTextfield.clear();
         publishingDatePicker.setValue(null);
     }
+
+    @FXML
+    public void backOnClick(ActionEvent actionEvent) {
+    }
 }
