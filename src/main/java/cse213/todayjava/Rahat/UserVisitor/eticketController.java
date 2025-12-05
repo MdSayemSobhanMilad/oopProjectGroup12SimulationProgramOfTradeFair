@@ -8,90 +8,86 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.awt.print.Book;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class bookticketController {
+public class eticketController {
 
     @FXML
-    private TableColumn<Bookticket, LocalDate> Datecolumn;
+    private TableColumn<Eticket,LocalDate> EventdateTablecolumn;
 
     @FXML
-    private ComboBox<String> GenderCombobox;
+    private TableColumn<Eticket,String> EventgtypeTablecolumn;
 
     @FXML
-    private TableColumn<Bookticket, String> Gendercolumn;
+    private ComboBox<String> EventtypeCombobox;
+
+    @FXML
+    private TableColumn<Eticket,String> NameTablecolumn;
 
     @FXML
     private TextField NameTextfield;
 
-    @FXML
-    private TableColumn<Bookticket, String> Namecolumn;
 
     @FXML
-    private TextField TicketIdTextfield;
+    private ComboBox<String> TickettypeCombobox;
+
+    @FXML
+    private TableColumn<Eticket, String> TickettypeTablecolumn;
 
     @FXML
     private DatePicker datepicker;
 
     @FXML
-    private TextField phoneNumberTextfield;
+    private TextField NumberTextfield;
 
     @FXML
-    private TableColumn<Bookticket, Integer> phoneNumbercolumn;
-
-    @FXML
-    private TableView<Bookticket> tableview;
-
-    @FXML
-    private TableColumn<Bookticket, Integer> ticketIdcolumn;
+    private TableView<Eticket> tableview;
 
     @FXML
     public void initialize() {
-        GenderCombobox.getItems().addAll("Male", "Female");
-        Namecolumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        phoneNumbercolumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        ticketIdcolumn.setCellValueFactory(new PropertyValueFactory<>("TicketId"));
-        Gendercolumn.setCellValueFactory(new PropertyValueFactory<>("Gender"));
-        Datecolumn.setCellValueFactory(new PropertyValueFactory<>("Date"));
-
+        TickettypeCombobox.getItems().addAll("General", "Vip", "Premium");
+        EventtypeCombobox.getItems().addAll("Tech Expo", "Food Fair", "Art SHow");
+        TickettypeTablecolumn.setCellValueFactory(new PropertyValueFactory<>("Tickettype"));
+        NameTablecolumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        EventgtypeTablecolumn.setCellValueFactory(new PropertyValueFactory<>("Eventtype"));
+        EventdateTablecolumn.setCellValueFactory(new PropertyValueFactory<>("Eventdate"));
 
     }
 
     @FXML
-    void BACKButton(ActionEvent event) throws IOException {
+    public void BackButton(ActionEvent event) throws IOException {
         Parent scene2Parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cse213/todayjava/Rahat/UserVisitor/visitorDashboard.fxml")));
         Scene scene2 = new Scene(scene2Parent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Book Ticket");
+        window.setTitle("Eticket");
         window.setScene(scene2);
         window.show();
-
     }
 
     @FXML
-    void BookticketButton(ActionEvent event) {
+    public void GenerateButton(ActionEvent actionEvent) {
         tableview.getItems().clear();
         String Name = NameTextfield.getText();
-        Integer TicketId = Integer.parseInt(TicketIdTextfield.getText());
-        Integer phoneNumber = Integer.parseInt(phoneNumberTextfield.getText());
-        LocalDate date = datepicker.getValue();
-        String gender = GenderCombobox.getValue();
+        String Tickettype = TickettypeCombobox.getValue();
+        int Number = Integer.parseInt(NumberTextfield.getText());
+        LocalDate Eventdate = datepicker.getValue();
+        String Eventtype = EventtypeCombobox.getValue();
         File f = null;
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            f = new File("BookTicket.bin");
+            f = new File("Eticket.bin");
             if (f.exists()) {
                 fos = new FileOutputStream(f, true);
                 oos = new AppendableObjectOutPutStream(fos);
@@ -99,34 +95,32 @@ public class bookticketController {
                 fos = new FileOutputStream(f);
                 oos = new ObjectOutputStream(fos);
             }
-            Bookticket y = new Bookticket(Name, phoneNumber, TicketId, gender, date);
+            Eticket y = new Eticket(Name,Number, Tickettype,Eventtype,Eventdate);
             tableview.getItems().add(y);
             oos.writeObject(y);
 
         } catch (IOException ex) {
-            Logger.getLogger(bookticketController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(eticketController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (oos != null) {
                     oos.close();
                 }
             } catch (IOException ex) {
-                Logger.getLogger(bookticketController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(eticketController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
-
     }
 
     @FXML
-    public void ShowAllButton(ActionEvent actionEvent) {
+    public void ShowallButton(ActionEvent actionEvent) {
         tableview.getItems().clear();
         ObjectInputStream ois = null;
         try {
-            Bookticket y;
-            ois = new ObjectInputStream(new FileInputStream("BookTicket.bin"));
+            Eticket y;
+            ois = new ObjectInputStream(new FileInputStream("Eticket.bin"));
             while (true) {
-                y = (Bookticket) ois.readObject();
+                y = (Eticket) ois.readObject();
                 tableview.getItems().add(y);
             }
         } catch (Exception ex) {
@@ -142,6 +136,3 @@ public class bookticketController {
     }
 
 }
-
-
-
