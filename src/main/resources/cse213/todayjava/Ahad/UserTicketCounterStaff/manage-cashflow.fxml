@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="631.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Ahad.UserTicketCounterStaff.ControllerClasses.ManageCashflowController">
+   <children>
+      <Label layoutX="137.0" layoutY="14.0" text=" CASH MANAGEMENT SYSTEM ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="91.0" text="Total Amount Due:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="totalAmountTextField" layoutX="232.0" layoutY="89.0" />
+      <Label layoutX="14.0" layoutY="129.0" text="Cash Received from Customer:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cashReceiveTextField" layoutX="232.0" layoutY="127.0" />
+      <Label layoutX="43.0" layoutY="165.0" text=" Change to Give Back:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="changeToGiveTextField" layoutX="232.0" layoutY="163.0" />
+      <Label layoutX="14.0" layoutY="214.0" text="Transaction Details:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="transactionTextArea" layoutX="14.0" layoutY="236.0" prefHeight="98.0" prefWidth="343.0" />
+      <Label layoutX="14.0" layoutY="349.0" text="Current Cash:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="currentCashTextField" layoutX="115.0" layoutY="347.0" />
+      <Button layoutX="32.0" layoutY="415.0" mnemonicParsing="false" onAction="#completeTransactionOnaction" prefHeight="38.0" prefWidth="166.0" text="Complete Transaction">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="10.0" layoutY="505.0" text="Status:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="statusTextField" layoutX="62.0" layoutY="503.0" prefHeight="22.0" prefWidth="330.0" />
+      <Button layoutX="217.0" layoutY="415.0" mnemonicParsing="false" onAction="#backOnaction" prefHeight="38.0" prefWidth="166.0" text="Back">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

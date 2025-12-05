@@ -27,22 +27,22 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="429.0" layoutY="114.0" mnemonicParsing="false" text="Visitor Regulations">
+      <Button layoutX="429.0" layoutY="114.0" mnemonicParsing="false" onAction="#visitorRegulationsOnaction" text="Visitor Regulations">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="411.0" layoutY="190.0" mnemonicParsing="false" text="Cash Flow Management">
+      <Button layoutX="411.0" layoutY="190.0" mnemonicParsing="false" onAction="#cashFlowManagementOnaction" text="Cash Flow Management">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="453.0" layoutY="279.0" mnemonicParsing="false" text="Sales Records">
+      <Button layoutX="453.0" layoutY="279.0" mnemonicParsing="false" onAction="#salesRecordOnaction" text="Sales Records">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="421.0" layoutY="362.0" mnemonicParsing="false" text="Conclude Operations">
+      <Button layoutX="421.0" layoutY="362.0" mnemonicParsing="false" onAction="#ConcludeOperationOnaction" text="Conclude Operations">
          <font>
             <Font size="15.0" />
          </font>
