@@ -1,6 +1,6 @@
 package cse213.todayjava.Ahad.UserTicketCounterStaff;
 
-public class SalesProcess{
+public class SalesProcess {
     private String ticketType;
     private int quantity;
     private double priceEach;
@@ -51,13 +51,16 @@ public class SalesProcess{
 
     private void calculateTotal() {
         totalPrice = priceEach * quantity;
+        totalPrice = Math.round(totalPrice * 100.0) / 100.0;
     }
 
     public String getDetails() {
-        String details = "Ticket Type: " + ticketType + "\n";
+        String details = "=== TICKET DETAILS ===\n";
+        details += "Type: " + ticketType + "\n";
         details += "Quantity: " + quantity + "\n";
-        details += "Price Each: $" + priceEach + "\n";
-        details += "Total: $" + totalPrice;
+        details += "Price Each: $" + String.format("%.2f", priceEach) + "\n";
+        details += "Total: $" + String.format("%.2f", totalPrice) + "\n";
+        details += "====================";
         return details;
     }
 }

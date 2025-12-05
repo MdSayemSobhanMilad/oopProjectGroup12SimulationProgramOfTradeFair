@@ -1,128 +1,147 @@
-package cse2131codeyjava.ahd;
+package cse213.todayjava.Ahad.UserTicketCounterStaff.ControllerClasses;
 
+import cse213.todayjava.Ahad.UserTicketCounterStaff.SalesProcess;
+
+import cse213.todayjava.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import java.text.DecimalFormat;
+import javafx.scene.control.*;
+
+import java.io.IOException;
 
 public class ProcessSalesController {
 
-    // Assuming these are your FXML components (adjust names as needed)
-    @FXML private TextArea tickedDetailsTextArea;
-    @FXML private TextField priceEachTextArea;
+    @FXML private ComboBox<String> ticketTypeComboBox;
+    @FXML private TextField quantityTextField;
+    @FXML private TextArea priceEachTextArea;
     @FXML private TextField totalTextField;
+    @FXML private TextArea ticketDetailsTextArea;
+    @FXML private TextArea confirmCustomerTextArea;
+    @FXML private TextArea confirmPaymentTextArea;
+    @FXML private TextArea sucessPaymentTextArea;
 
-    // Variables to hold current sale data
-    private String ticketType;
-    private int quantity;
-    private double pricePerTicket;
-    private double total;
+    private SalesProcess sale;
 
-    // Decimal formatter for currency
-    private static final DecimalFormat df = new DecimalFormat("$0.00");
-
-    // Initialize method (optional)
     @FXML
     public void initialize() {
-        // Initialization code if needed
+        ticketTypeComboBox.getItems().addAll("Standard", "VIP", "Student", "Senior", "Child");
+        clearAll();
     }
 
-    // This method handles the "Omedian" button click (or similar action)
-    public void clickOmedian(ActionEvent actionEvent) {
+    @FXML
+    private void clickOnaction(ActionEvent event) {
         try {
-            // In a real scenario, these values would come from user input
-            // For example, from text fields or dropdowns
-            ticketType = "Standard"; // Example value
-            quantity = 2; // Example value
-            pricePerTicket = 25.00; // Example value
+            String ticketType = ticketTypeComboBox.getValue();
+            if (ticketType == null || ticketType.isEmpty()) {
+                // No error shown - just do nothing
+                return;
+            }
 
-            // Calculate total
-            total = calculateTotal(quantity, pricePerTicket);
+            String qtyText = quantityTextField.getText();
+            if (qtyText == null || qtyText.isEmpty()) {
+                // No error shown - just do nothing
+                return;
+            }
 
-            // Update the UI fields
-            priceEachTextArea.setText(df.format(pricePerTicket));
-            totalTextField.setText(df.format(total));
+            int quantity = Integer.parseInt(qtyText);
+            if (quantity < 1) {
+                // No error shown - just reset
+                quantityTextField.setText("1");
+                quantity = 1;
+            }
 
-            // Build details string
-            String details = buildTicketDetails(ticketType, quantity, pricePerTicket, total);
+            double price = getPrice(ticketType);
 
-            // Set the details in the text area
-            tickedDetailsTextArea.setText(details);
+            sale = new SalesProcess(ticketType, quantity, price);
 
-        } catch (Exception e) {
-            // Handle exception appropriately
-            System.err.println("Error in clickOmedian: " + e.getMessage());
-            e.printStackTrace();
-            tickedDetailsTextArea.setText("Error processing sale: " + e.getMessage());
+            priceEachTextArea.setText("$" + String.format("%.2f", sale.getPriceEach()));
+            totalTextField.setText("$" + String.format("%.2f", sale.getTotalPrice()));
+            ticketDetailsTextArea.setText(sale.getDetails());
+
+            confirmCustomerTextArea.setText("Ready to confirm");
+
+        } catch (NumberFormatException e) {
+            // No error shown - just reset to default
+            quantityTextField.setText("1");
         }
     }
 
-    // Calculate total price
-    private double calculateTotal(int quantity, double pricePerTicket) {
-        return quantity * pricePerTicket;
+    @FXML
+    private void confirmCustomerOnaction(ActionEvent event) {
+        if (sale == null) {
+            // No error shown - just clear the text area
+            confirmCustomerTextArea.clear();
+            return;
+        }
+
+        confirmCustomerTextArea.setText("CONFIRMED\n");
+        confirmCustomerTextArea.appendText("Ticket: " + sale.getTicketType() + "\n");
+        confirmCustomerTextArea.appendText("Quantity: " + sale.getQuantity() + "\n");
+        confirmCustomerTextArea.appendText("Total: $" + String.format("%.2f", sale.getTotalPrice()) + "\n");
+        confirmCustomerTextArea.appendText("Ready for payment");
     }
 
-    // Build ticket details string
-    private String buildTicketDetails(String type, int qty, double price, double total) {
-        StringBuilder details = new StringBuilder();
-        details.append("Ticket: ").append(type).append("\n");
-        details.append("Quantity: ").append(qty).append("\n");
-        details.append("Price: ").append(df.format(price)).append("\n");
-        details.append("Total: ").append(df.format(total));
-        return details.toString();
+    @FXML
+    private void proceedPaymentOnaction(ActionEvent event) {
+        String transId = "TX" + System.currentTimeMillis();
+
+        if (sale != null) {
+            confirmPaymentTextArea.setText("PAYMENT DONE\n");
+            confirmPaymentTextArea.appendText("Amount: $" + String.format("%.2f", sale.getTotalPrice()) + "\n");
+            confirmPaymentTextArea.appendText("ID: " + transId + "\n");
+            confirmPaymentTextArea.appendText("Status: Paid");
+
+            sucessPaymentTextArea.setText("SUCCESS!\n");
+            sucessPaymentTextArea.appendText("ID: " + transId);
+        } else {
+            confirmPaymentTextArea.setText("PAYMENT DONE\n");
+            confirmPaymentTextArea.appendText("ID: " + transId + "\n");
+            confirmPaymentTextArea.appendText("Status: Paid");
+
+            sucessPaymentTextArea.setText("SUCCESS!\n");
+            sucessPaymentTextArea.appendText("ID: " + transId);
+        }
+
+        clearForNext();
     }
 
-    // Additional methods for other functionality
+    @Deprecated
+    private void BackbuttonOnaction(ActionEvent event) {
+        // Back button action - no errors shown
+    }
 
-    // If you had a BALA class, here's what it might look like as an inner class
-    public static class BALA {
-        private double priceEach;
-        private int quantity;
-
-        public BALA(double priceEach, int quantity) {
-            this.priceEach = priceEach;
-            this.quantity = quantity;
-        }
-
-        public double getTotal() {
-            return this.priceEach * this.quantity;
-        }
-
-        public void setPriceEach(double priceEach) {
-            this.priceEach = priceEach;
-        }
-
-        public double getPriceEach() {
-            return priceEach;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
+    private double getPrice(String type) {
+        switch (type) {
+            case "VIP": return 50.0;
+            case "Student": return 18.0;
+            case "Senior": return 20.0;
+            case "Child": return 12.0;
+            default: return 25.0;
         }
     }
 
-    // Alternative method using BALA object
-    public void processSaleWithBALA() {
-        try {
-            BALA bala = new BALA(25.00, 2); // Example values
+    private void clearAll() {
+        quantityTextField.clear();
+        ticketTypeComboBox.setValue(null);
+        priceEachTextArea.clear();
+        totalTextField.clear();
+        ticketDetailsTextArea.clear();
+        confirmCustomerTextArea.clear();
+        confirmPaymentTextArea.clear();
+        sucessPaymentTextArea.clear();
+        sale = null;
+    }
 
-            // If you want to use BALA object
-            priceEachTextArea.setText("$" + bala.getPriceEach());
-            totalTextField.setText("$" + bala.getTotal());
+    private void clearForNext() {
+        quantityTextField.clear();
+        ticketTypeComboBox.setValue(null);
+        ticketDetailsTextArea.clear();
+        confirmCustomerTextArea.clear();
+        sale = null;
+    }
 
-            String details = "Ticket: " + ticketType + "\n";
-            details += "Quantity: " + bala.getQuantity() + "\n";
-            details += "Price: $" + bala.getPriceEach() + "\n";
-            details += "Total: $" + bala.getTotal();
-
-            tickedDetailsTextArea.setText(details);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    public void backButtonOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/ticketCounterStaffDashboard.fxml", actionEvent);
     }
 }

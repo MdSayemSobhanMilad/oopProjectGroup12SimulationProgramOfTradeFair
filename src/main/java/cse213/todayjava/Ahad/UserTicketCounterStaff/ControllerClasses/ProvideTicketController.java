@@ -22,35 +22,33 @@ public class ProvideTicketController {
     private TextField visitorNameTextField;
 
     private TicketProvider currentTicket;
-    private int ticketCounter = 1;
 
     @javafx.fxml.FXML
     public void initialize() {
         passTypeComboBox.getItems().addAll("Single Day", "Multi-Day", "VIP", "Exhibitor");
         getTicketComboBox.getItems().addAll("Print Ticket", "Email Ticket", "SMS Ticket");
 
-        statusTextField.setText("Ready");
+        statusTextField.setText("Ready to create ticket");
+        ticketDetailsTextArea.setText("Enter ticket code and visitor details");
     }
 
     @javafx.fxml.FXML
     public void creatTicketOnaction(ActionEvent actionEvent) {
+        String ticketCode = ticketCodeTextField.getText();
         String visitorName = visitorNameTextField.getText();
         String passType = passTypeComboBox.getValue();
         String deliveryMethod = getTicketComboBox.getValue();
 
-        if (visitorName.isEmpty() || passType == null || deliveryMethod == null) {
+        if (ticketCode.isEmpty() || visitorName.isEmpty() || passType == null || deliveryMethod == null) {
+            statusTextField.setText("Complete all fields");
             return;
         }
-
-        String ticketCode = "FAIR-" + String.format("%03d", ticketCounter);
-        ticketCounter++;
 
         currentTicket = new TicketProvider(ticketCode, visitorName);
         currentTicket.setPassType(passType);
         currentTicket.setDeliveryMethod(deliveryMethod);
-        currentTicket.setStatus("Created");
+        currentTicket.setStatus("Ticket Created");
 
-        ticketCodeTextField.setText(ticketCode);
         statusTextField.setText("Ticket Created");
 
         String details = currentTicket.getTicketDetails();
@@ -60,6 +58,7 @@ public class ProvideTicketController {
     @javafx.fxml.FXML
     public void giveVisitorOnaction(ActionEvent actionEvent) {
         if (currentTicket == null) {
+            statusTextField.setText("Create ticket first");
             return;
         }
 

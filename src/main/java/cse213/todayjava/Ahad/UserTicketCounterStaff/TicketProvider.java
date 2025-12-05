@@ -58,13 +58,13 @@ public class TicketProvider {
     }
 
     public String getTicketDetails() {
-        String details = "TRADE FAIR TICKET\n";
-        details += "=================\n";
-        details += "Code: " + ticketCode + "\n";
-        details += "Visitor: " + visitorName + "\n";
-        details += "Pass: " + passType + "\n";
-        details += "Delivery: " + deliveryMethod + "\n";
-        details += "Status: " + status + "\n";
+        String details = "=== TRADE FAIR TICKET ===\n";
+        details += "Ticket Code: " + ticketCode + "\n";
+        details += "Visitor Name: " + visitorName + "\n";
+        details += "Pass Type: " + passType + "\n";
+        details += "Delivery Method: " + deliveryMethod + "\n";
+        details += "Current Status: " + status + "\n";
+        details += "=========================";
         return details;
     }
 }
