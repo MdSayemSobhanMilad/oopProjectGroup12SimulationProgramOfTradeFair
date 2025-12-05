@@ -1,45 +1,56 @@
 package cse213.todayjava.Ahad.UserTicketCounterStaff;
 
-import java.util.*;
-
 public class TransactionLog {
-    private String logId;
-    private List<String> transactions;
-    private Date shiftDate;
+    private String paymentMethod;
+    private double amount;
+    private String time;
+    private boolean isSuccessful;
 
-    public TransactionLog(String logId) {
-        this.logId = logId;
-        this.transactions = new ArrayList<>();
-        this.shiftDate = new Date();
+    public TransactionLog() {
+        this.time = java.time.LocalTime.now().toString().substring(0, 8);
     }
 
-    // Getters and Setters
-    public String getLogId() { return logId; }
-    public void setLogId(String logId) { this.logId = logId; }
-
-    public List<String> getTransactions() { return transactions; }
-    public void setTransactions(List<String> transactions) { this.transactions = transactions; }
-
-    public Date getShiftDate() { return shiftDate; }
-    public void setShiftDate(Date shiftDate) { this.shiftDate = shiftDate; }
-
-    // Methods
-    public void addTransaction(String transactionDetails) {
-        transactions.add(new Date() + " - " + transactionDetails);
-        System.out.println("Transaction added to log: " + transactionDetails);
+    public TransactionLog(String paymentMethod, double amount) {
+        this();
+        this.paymentMethod = paymentMethod;
+        this.amount = amount;
     }
 
-    public List<String> getShiftTransactions() {
-        System.out.println("Retrieving all transactions for shift: " + shiftDate);
-        return new ArrayList<>(transactions);
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    @Override
-    public String toString() {
-        return "TransactionLog{" +
-                "logId='" + logId + '\'' +
-                ", transactions=" + transactions.size() +
-                ", shiftDate=" + shiftDate +
-                '}';
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public boolean isSuccessful() {
+        return isSuccessful;
+    }
+
+    public void setSuccessful(boolean successful) {
+        isSuccessful = successful;
+    }
+
+    public String generateReceipt() {
+        String receipt = "=== RECEIPT ===\n";
+        receipt += "Time: " + time + "\n";
+        receipt += "Amount: $" + amount + "\n";
+        receipt += "Payment: " + paymentMethod + "\n";
+        receipt += "Status: SUCCESS\n";
+        receipt += "Thank you!";
+        return receipt;
     }
 }
