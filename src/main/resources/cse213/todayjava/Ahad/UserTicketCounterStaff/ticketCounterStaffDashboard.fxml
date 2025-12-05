@@ -17,17 +17,12 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="65.0" layoutY="190.0" mnemonicParsing="false" onAction="#processTicketSalesOnaction" text="Process Ticket Sales">
+      <Button layoutX="63.0" layoutY="279.0" mnemonicParsing="false" onAction="#finalizeTransactionsOnaction" text="Finalize Transactions">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="63.0" layoutY="279.0" mnemonicParsing="false" text="Finalize Transactions">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="83.0" layoutY="362.0" mnemonicParsing="false" text="Provide Tickets">
+      <Button layoutX="81.0" layoutY="337.0" mnemonicParsing="false" onAction="#provideTicketsOnaction" text="Provide Tickets">
          <font>
             <Font size="15.0" />
          </font>
@@ -53,6 +48,11 @@
          </font>
       </Button>
       <Button layoutX="601.0" layoutY="544.0" mnemonicParsing="false" onAction="#logOutOnaction" text="Log out">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="86.0" layoutY="196.0" mnemonicParsing="false" onAction="#processSalesOnaction" text="process sales">
          <font>
             <Font size="15.0" />
          </font>

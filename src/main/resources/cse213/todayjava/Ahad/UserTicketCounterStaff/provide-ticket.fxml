@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="562.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Ahad.UserTicketCounterStaff.ControllerClasses.ProvideTicketController">
+   <children>
+      <Label layoutX="149.0" layoutY="14.0" text="TRADE FAIR TICKET COUNTER">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="71.0" text="Ticket Code:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ticketCodeTextField" layoutX="115.0" layoutY="69.0" />
+      <Label layoutX="17.0" layoutY="115.0" text="Visitor Name:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="visitorNameTextField" layoutX="116.0" layoutY="113.0" />
+      <Label layoutX="28.0" layoutY="165.0" text="Pass Type:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="passTypeComboBox" layoutX="116.0" layoutY="163.0" prefWidth="150.0" />
+      <Label layoutX="11.0" layoutY="210.0" prefHeight="26.0" prefWidth="102.0" text="Get Ticket As:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="getTicketComboBox" layoutX="116.0" layoutY="211.0" prefWidth="150.0" />
+      <Button layoutX="70.0" layoutY="269.0" mnemonicParsing="false" onAction="#creatTicketOnaction" text="Create Ticket" />
+      <Button layoutX="170.0" layoutY="269.0" mnemonicParsing="false" onAction="#giveVisitorOnaction" text="Give to Visitor" />
+      <Label layoutX="16.0" layoutY="311.0" text="Ticket Details:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="ticketDetailsTextArea" layoutX="8.0" layoutY="333.0" prefHeight="162.0" prefWidth="392.0" />
+      <Label layoutX="16.0" layoutY="503.0" text=" Status:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="statusTextField" layoutX="74.0" layoutY="501.0" />
+      <Button layoutX="527.0" layoutY="525.0" mnemonicParsing="false" onAction="#backOnaction" prefHeight="26.0" prefWidth="58.0" text="Back" />
+   </children>
 </AnchorPane>

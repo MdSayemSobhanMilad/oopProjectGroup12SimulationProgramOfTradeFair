@@ -8,7 +8,6 @@ module cse213.todayjava {
     exports cse213.todayjava;
     opens cse213.todayjava to javafx.fxml;
 
-    // FIX: Add this line to allow JavaFX to access MaintenanceReport
     opens cse213.todayjava.Milad.UserMaintenanceStaff to javafx.base;
     opens cse213.todayjava.Milad.UserSecurityPersonnel to javafx.base;
     opens cse213.todayjava.Ahad.UserStallOwner to javafx.base;

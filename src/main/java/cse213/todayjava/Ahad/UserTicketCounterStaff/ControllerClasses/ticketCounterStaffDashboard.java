@@ -24,8 +24,25 @@ public class ticketCounterStaffDashboard
         SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/start-ticketing.fxml", actionEvent);
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void processTicketSalesOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/process-sales.fxml", actionEvent);
+
+    }
+
+    @javafx.fxml.FXML
+    public void finalizeTransactionsOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/finalize-transactions.fxml", actionEvent);
+
+    }
+
+    @javafx.fxml.FXML
+    public void provideTicketsOnaction(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/provide-ticket.fxml", actionEvent);
+    }
+
+    @javafx.fxml.FXML
+    public void processSalesOnaction(ActionEvent actionEvent) throws IOException {
         SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/process-sales.fxml", actionEvent);
 
     }
