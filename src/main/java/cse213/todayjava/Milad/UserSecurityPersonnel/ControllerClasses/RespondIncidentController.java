@@ -1,4 +1,4 @@
-package cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses;
+package cse213.todayjava.Milad.UserSecurityPersonnel.ControllerClasses;
 
 import cse213.todayjava.Milad.UserMaintenanceStaff.MaintenanceReport;
 import cse213.todayjava.SceneSwitcher;
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepairController {
+public class RespondIncidentController {
 
     @FXML
     private TableColumn<MaintenanceReport, LocalDate> generateDateTC;
