@@ -1,9 +1,13 @@
 package cse213.todayjava.Arabi.UserGovernmentOfficer;
 
+import cse213.todayjava.SceneSwitcher;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.io.IOException;
 
 public class monitorTaxCollectionControllerClass {
 
@@ -23,87 +27,109 @@ public class monitorTaxCollectionControllerClass {
     private TableView<TaxCollection> monitorTaxCollectionTableView;
 
     @FXML
-    private TableColumn<TaxCollection, Double> totalTaxTableColumn;
+    private TableColumn<TaxCollection, String> totalTaxTableColumn;
 
     @FXML
-    private TableColumn<TaxCollection, Double> pendingTableColumn;
+    private TableColumn<TaxCollection, String> pendingTableColumn;
 
     @FXML
     private TableColumn<TaxCollection, String> statusTableColumn;
 
-    // List to store tax data
+    @FXML
+    private Label statusLabel;
+
+    private ToggleGroup statusToggleGroup;
     private ObservableList<TaxCollection> taxList = FXCollections.observableArrayList();
 
-    // Initialize method - This runs when the screen loads
     @FXML
     public void initialize() {
-        // Set up the table columns
-        totalTaxTableColumn.setCellValueFactory(cellData -> {
-            TaxCollection tax = cellData.getValue();
-            return new javafx.beans.property.SimpleDoubleProperty(tax.getTotalTax()).asObject();
-        });
+        System.out.println("Tax Collection Controller Started");
 
-        pendingTableColumn.setCellValueFactory(cellData -> {
-            TaxCollection tax = cellData.getValue();
-            return new javafx.beans.property.SimpleDoubleProperty(tax.getPending()).asObject();
-        });
 
-        statusTableColumn.setCellValueFactory(cellData -> {
-            TaxCollection tax = cellData.getValue();
-            return new javafx.beans.property.SimpleStringProperty(tax.getStatus());
-        });
+        statusToggleGroup = new ToggleGroup();
+        allPaidRadioButton.setToggleGroup(statusToggleGroup);
+        pendingRadioButton.setToggleGroup(statusToggleGroup);
 
-        // Set the data to table
+
+        totalTaxTableColumn.setCellValueFactory(cell ->
+                new javafx.beans.property.SimpleStringProperty(cell.getValue().getTotalTax()));
+
+        pendingTableColumn.setCellValueFactory(cell ->
+                new javafx.beans.property.SimpleStringProperty(cell.getValue().getPending()));
+
+        statusTableColumn.setCellValueFactory(cell ->
+                new javafx.beans.property.SimpleStringProperty(cell.getValue().getStatus()));
+
+
         monitorTaxCollectionTableView.setItems(taxList);
+
+
+        statusLabel.setText("");
     }
 
-    // Submit button action
     @FXML
     private void submitOnClick() {
-        // Check if all fields are filled
-        if (totalTaxTextField.getText().isEmpty() ||
-                pendingTextField.getText().isEmpty() ||
-                (!allPaidRadioButton.isSelected() && !pendingRadioButton.isSelected())) {
+        System.out.println("Submit button click!");
 
-            // Don't show table if fields are empty
+
+        String totalTax = totalTaxTextField.getText();
+        String pending = pendingTextField.getText();
+
+
+        String status = "";
+        if (allPaidRadioButton.isSelected()) {
+            status = "All Paid";
+        } else if (pendingRadioButton.isSelected()) {
+            status = "Pending";
+        }
+
+
+        if (totalTax.isEmpty() || pending.isEmpty() || status.isEmpty()) {
+
+            statusLabel.setText("failed");
+            System.out.println("Field khali ache!");
             return;
         }
 
-        try {
-            // Get values from text fields
-            double totalTax = Double.parseDouble(totalTaxTextField.getText());
-            double pending = Double.parseDouble(pendingTextField.getText());
 
-            // Get status from radio buttons
-            String status;
-            if (allPaidRadioButton.isSelected()) {
-                status = "All Paid";
-            } else {
-                status = "Pending";
-            }
 
-            // Create new TaxCollection object
-            TaxCollection newTax = new TaxCollection(totalTax, pending, status);
+        TaxCollection newTax = new TaxCollection(totalTax, pending, status);
 
-            // Add to the table
-            taxList.add(newTax);
 
-            // Clear all fields after adding
-            totalTaxTextField.clear();
-            pendingTextField.clear();
-            allPaidRadioButton.setSelected(false);
-            pendingRadioButton.setSelected(false);
+        taxList.add(newTax);
 
-        } catch (NumberFormatException e) {
-            // Do nothing if invalid numbers
-            return;
-        }
+
+        statusLabel.setText("successful");
+        System.out.println("Table e data add hoise!");
+
+
+        clearFields();
     }
 
-    // Back button action
     @FXML
-    private void backOnClick() {
-        // You can add your back navigation logic here
-        System.out.println("Back button clicked");
+    private void clearOnClick() {
+        System.out.println("Clear button click!");
+
+
+        taxList.clear();
+
+
+        statusLabel.setText("");
+
+
+        clearFields();
+
+        System.out.println("Table history clear hoise!");
+    }
+
+    @javafx.fxml.FXML
+    public void backOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserGovernmentOfficer/governmentOfficerDashboard.fxml", actionEvent);
+    }
+
+    private void clearFields() {
+        totalTaxTextField.clear();
+        pendingTextField.clear();
+        statusToggleGroup.selectToggle(null);
     }
 }

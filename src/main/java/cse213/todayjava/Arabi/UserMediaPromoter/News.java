@@ -9,7 +9,7 @@ public class News {
     private Date publishDate;
     private String mediaPromoterId;
 
-    // Constructor
+
     public News(String newsId, String title, String content, Date publishDate, String mediaPromoterId) {
         this.newsId = newsId;
         this.title = title;
@@ -18,10 +18,10 @@ public class News {
         this.mediaPromoterId = mediaPromoterId;
     }
 
-    // Default constructor
+
     public News() {}
 
-    // Getters and Setters
+
     public String getNewsId() {
         return newsId;
     }
@@ -62,7 +62,7 @@ public class News {
         this.mediaPromoterId = mediaPromoterId;
     }
 
-    // Methods from UML
+
     public void publish() {
         System.out.println("News published: " + title);
     }
@@ -71,7 +71,7 @@ public class News {
         System.out.println("News edited: " + title);
     }
 
-    // toString method
+
     @Override
     public String toString() {
         return "News{" +

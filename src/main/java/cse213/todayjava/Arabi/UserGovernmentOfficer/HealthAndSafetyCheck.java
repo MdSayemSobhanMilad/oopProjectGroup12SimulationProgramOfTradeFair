@@ -4,17 +4,17 @@ public class HealthAndSafetyCheck {
     private String reportId;
     private String safetyStatus;
 
-    // Constructor with parameters
+
     public HealthAndSafetyCheck(String reportId, String safetyStatus) {
         this.reportId = reportId;
         this.safetyStatus = safetyStatus;
     }
 
-    // Empty constructor
+
     public HealthAndSafetyCheck() {
     }
 
-    // Getters and Setters
+
     public String getReportId() {
         return reportId;
     }
@@ -31,7 +31,7 @@ public class HealthAndSafetyCheck {
         this.safetyStatus = safetyStatus;
     }
 
-    // toString method
+
     @Override
     public String toString() {
         return "Report ID: " + reportId + ", Safety Status: " + safetyStatus;

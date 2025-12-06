@@ -1,5 +1,6 @@
 package cse213.todayjava.Arabi.UserMediaPromoter;
 
+import cse213.todayjava.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -88,7 +91,8 @@ public class User7Goal1ControllerClass implements Initializable {
         publishingDatePicker.setValue(null);
     }
 
-    @FXML
-    public void backOnClick(ActionEvent actionEvent) {
+    @javafx.fxml.FXML
+    public void backOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/mediaPromoterDashboard.fxml", actionEvent);
     }
 }

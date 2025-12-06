@@ -1,35 +1,35 @@
 package cse213.todayjava.Arabi.UserGovernmentOfficer;
 
 public class TaxCollection {
-    private double totalTax;
-    private double pending;
+    private String totalTax;
+    private String pending;
     private String status;
 
-    // Constructor
-    public TaxCollection(double totalTax, double pending, String status) {
+    
+    public TaxCollection(String totalTax, String pending, String status) {
         this.totalTax = totalTax;
         this.pending = pending;
         this.status = status;
     }
 
-    // Empty constructor
+
     public TaxCollection() {
     }
 
-    // Getters and Setters
-    public double getTotalTax() {
+
+    public String getTotalTax() {
         return totalTax;
     }
 
-    public void setTotalTax(double totalTax) {
+    public void setTotalTax(String totalTax) {
         this.totalTax = totalTax;
     }
 
-    public double getPending() {
+    public String getPending() {
         return pending;
     }
 
-    public void setPending(double pending) {
+    public void setPending(String pending) {
         this.pending = pending;
     }
 
@@ -41,13 +41,9 @@ public class TaxCollection {
         this.status = status;
     }
 
-    // toString method
+
     @Override
     public String toString() {
-        return "TaxCollection{" +
-                "totalTax=" + totalTax +
-                ", pending=" + pending +
-                ", status='" + status + '\'' +
-                '}';
+        return totalTax + " | " + pending + " | " + status;
     }
 }

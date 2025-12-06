@@ -4,17 +4,17 @@ public class PolicyCompliance {
     private String stallName;
     private String violenceDetails;
 
-    // Constructor
+
     public PolicyCompliance(String stallName, String violenceDetails) {
         this.stallName = stallName;
         this.violenceDetails = violenceDetails;
     }
 
-    // Empty constructor
+
     public PolicyCompliance() {
     }
 
-    // Getters and Setters
+
     public String getStallName() {
         return stallName;
     }
@@ -31,7 +31,7 @@ public class PolicyCompliance {
         this.violenceDetails = violenceDetails;
     }
 
-    // toString method
+
     @Override
     public String toString() {
         return stallName + ": " + violenceDetails;

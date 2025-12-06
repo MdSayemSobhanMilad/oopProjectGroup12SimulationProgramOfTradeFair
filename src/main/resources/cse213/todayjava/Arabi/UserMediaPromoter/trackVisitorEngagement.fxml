@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="466.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Arabi.UserMediaPromoter.trackVisitorEngagementControllerClass">
    <children>
       <Label layoutX="220.0" layoutY="35.0" text="Track Visitor Engagement ">
@@ -20,9 +19,9 @@
       </Label>
       <Label layoutX="50.0" layoutY="103.0" text="Select Date" />
       <Label layoutX="50.0" layoutY="133.0" text="Comments" />
-      <TextField layoutX="134.0" layoutY="65.0" />
-      <DatePicker layoutX="122.0" layoutY="99.0" />
-      <TextArea layoutX="109.0" layoutY="133.0" prefHeight="64.0" prefWidth="200.0" />
+      <TextField fx:id="visitorPostTextField" layoutX="134.0" layoutY="65.0" />
+      <DatePicker fx:id="selectDatePicker" layoutX="122.0" layoutY="99.0" />
+      <TextArea fx:id="commentsTextArea" layoutX="109.0" layoutY="133.0" prefHeight="64.0" prefWidth="200.0" />
       <Label layoutX="50.0" layoutY="69.0" text="Visitor Post" />
       <TableView fx:id="trackVisitorEngagementTableView" layoutX="50.0" layoutY="216.0" prefHeight="200.0" prefWidth="275.0">
         <columns>

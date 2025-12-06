@@ -5,18 +5,18 @@ public class ExhibitorLicense {
     private String stallNo;
     private String licenseNumber;
 
-    // Constructor with parameters
+
     public ExhibitorLicense(String exhibitorName, String stallNo, String licenseNumber) {
         this.exhibitorName = exhibitorName;
         this.stallNo = stallNo;
         this.licenseNumber = licenseNumber;
     }
 
-    // Empty constructor
+
     public ExhibitorLicense() {
     }
 
-    // Getters and Setters
+
     public String getExhibitorName() {
         return exhibitorName;
     }
@@ -41,7 +41,7 @@ public class ExhibitorLicense {
         this.licenseNumber = licenseNumber;
     }
 
-    // toString method
+
     @Override
     public String toString() {
         return "Exhibitor: " + exhibitorName +

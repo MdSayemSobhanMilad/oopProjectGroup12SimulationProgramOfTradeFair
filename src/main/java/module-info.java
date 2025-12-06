@@ -5,6 +5,9 @@ module cse213.todayjava {
     requires javafx.graphics;
     requires jdk.jfr;
     requires java.desktop;
+    requires javafx.base;
+
+
 
     exports cse213.todayjava;
     opens cse213.todayjava to javafx.fxml;

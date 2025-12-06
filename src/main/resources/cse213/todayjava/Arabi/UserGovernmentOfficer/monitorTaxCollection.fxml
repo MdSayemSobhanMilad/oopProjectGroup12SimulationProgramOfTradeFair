@@ -30,7 +30,9 @@
         </columns>
       </TableView>
       <Label layoutX="57.0" layoutY="138.0" text="Status:" />
-      <Button layoutX="323.0" layoutY="287.0" mnemonicParsing="false" onAction="#submitOnClick" prefHeight="25.0" prefWidth="127.0" text=" submit" />
+      <Button layoutX="354.0" layoutY="287.0" mnemonicParsing="false" onAction="#submitOnClick" prefHeight="25.0" prefWidth="83.0" text=" submit" />
       <Button layoutX="431.0" layoutY="342.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
+      <Button layoutX="478.0" layoutY="287.0" mnemonicParsing="false" onAction="#clearOnClick" prefHeight="25.0" prefWidth="93.0" text="Clear" />
+      <Label fx:id="statusLabel" layoutX="458.0" layoutY="192.0" text="Status" />
    </children>
 </AnchorPane>

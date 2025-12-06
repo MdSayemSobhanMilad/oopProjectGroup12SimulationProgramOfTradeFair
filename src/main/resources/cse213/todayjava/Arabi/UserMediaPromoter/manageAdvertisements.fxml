@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="469.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Arabi.UserMediaPromoter.manageAdvertisementsControllerClass">
    <children>
       <Label layoutX="186.0" layoutY="35.0" text="Manage advertisements">
@@ -16,24 +15,25 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TableView layoutX="56.0" layoutY="250.0" prefHeight="169.0" prefWidth="321.0">
+      <TableView fx:id="manageAdvertisementsTableView" layoutX="56.0" layoutY="250.0" prefHeight="169.0" prefWidth="321.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Add ID" />
-          <TableColumn prefWidth="75.0" text="Sponsor" />
-            <TableColumn prefWidth="75.0" text="Add Type" />
-            <TableColumn prefWidth="75.0" text="Status" />
+          <TableColumn fx:id="addIdTableColumn" prefWidth="75.0" text="Add ID" />
+          <TableColumn fx:id="sponsorTableColumn" prefWidth="75.0" text="Sponsor" />
+            <TableColumn fx:id="addTypeTableColumn" prefWidth="75.0" text="Add Type" />
+            <TableColumn fx:id="statusTableColumn" prefWidth="75.0" text="Status" />
         </columns>
       </TableView>
-      <Label layoutX="43.0" layoutY="77.0" prefHeight="17.0" prefWidth="97.0" text="Banner Position:" />
-      <Label layoutX="34.0" layoutY="111.0" prefHeight="17.0" prefWidth="97.0" text="Duration:" />
-      <Label layoutX="53.0" layoutY="152.0" prefHeight="17.0" prefWidth="97.0" text="Cost:" />
-      <Label layoutX="34.0" layoutY="188.0" prefHeight="17.0" prefWidth="97.0" text="End Date:" />
-      <TextField layoutX="140.0" layoutY="107.0" />
-      <TextField layoutX="140.0" layoutY="148.0" />
-      <TextField layoutX="150.0" layoutY="73.0" />
-      <TextField layoutX="140.0" layoutY="184.0" />
-      <Button layoutX="461.0" layoutY="222.0" mnemonicParsing="false" text="ijnn" />
-      <Button layoutX="487.0" layoutY="283.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="538.0" layoutY="219.0" mnemonicParsing="false" text="Button" />
+      <Label layoutX="43.0" layoutY="77.0" prefHeight="17.0" prefWidth="97.0" text="Add ID:" />
+      <Label layoutX="34.0" layoutY="111.0" prefHeight="17.0" prefWidth="97.0" text="Sponsor" />
+      <Label layoutX="34.0" layoutY="152.0" prefHeight="17.0" prefWidth="97.0" text="Add Type" />
+      <Label layoutX="34.0" layoutY="188.0" prefHeight="17.0" prefWidth="97.0" text="Status" />
+      <TextField fx:id="sponsorTextField" layoutX="140.0" layoutY="107.0" />
+      <TextField fx:id="addTypeTextField" layoutX="140.0" layoutY="148.0" />
+      <TextField fx:id="addIdTextField" layoutX="150.0" layoutY="73.0" />
+      <TextField fx:id="statusTextField" layoutX="140.0" layoutY="184.0" />
+      <Button layoutX="443.0" layoutY="250.0" mnemonicParsing="false" onAction="#submitOnClick" text="Submit" />
+      <Button layoutX="532.0" layoutY="250.0" mnemonicParsing="false" onAction="#clearOnClick" text="Clear" />
+      <Button layoutX="478.0" layoutY="302.0" mnemonicParsing="false" onAction="#backOnClick" text="Back" />
+      <Label fx:id="statusLabel" layoutX="498.0" layoutY="188.0" text="Status" />
    </children>
 </AnchorPane>

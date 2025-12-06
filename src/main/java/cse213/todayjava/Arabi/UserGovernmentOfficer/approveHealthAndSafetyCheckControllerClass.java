@@ -1,7 +1,11 @@
 package cse213.todayjava.Arabi.UserGovernmentOfficer;
 
+import cse213.todayjava.SceneSwitcher;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 
 public class approveHealthAndSafetyCheckControllerClass {
 
@@ -22,36 +26,36 @@ public class approveHealthAndSafetyCheckControllerClass {
 
     @FXML
     public void initialize() {
-        // টেবিলের কলাম সেট করা
+
         reportIdTableColumn.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getReportId()));
         safetyStatusTableColumn.setCellValueFactory(cell -> new javafx.beans.property.SimpleStringProperty(cell.getValue().getSafetyStatus()));
     }
 
     @FXML
     private void submitOnClick() {
-        // সব ফিল্ড চেক করা
+
         String reportId = reportIdTextField.getText();
         String safetyStatus = safetyStatusTextArea.getText();
 
-        // দুটি ফিল্ডই ভরা থাকতে হবে
+
         if (reportId.isEmpty() || safetyStatus.isEmpty()) {
             return;
         }
 
-        // নতুন ডেটা তৈরি
+
         HealthAndSafetyCheck newCheck = new HealthAndSafetyCheck(reportId, safetyStatus);
 
-        // টেবিলে যোগ করা
+
         approveHealthAndSafetyCheckTableView.getItems().add(newCheck);
 
-        // ফিল্ড খালি করা
+
         reportIdTextField.clear();
         safetyStatusTextArea.clear();
     }
 
-    @FXML
-    private void backOnClick() {
-        // Back button এর কাজ
-        System.out.println("Back button clicked");
+    @javafx.fxml.FXML
+    public void backOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserGovernmentOfficer/governmentOfficerDashboard.fxml", actionEvent);
     }
 }
+

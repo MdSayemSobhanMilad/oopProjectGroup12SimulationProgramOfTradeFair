@@ -24,19 +24,27 @@ public class mediaPromoterDashboardControllerClass
     }
 
     @javafx.fxml.FXML
-    public void uploadPhotosOnClick(ActionEvent actionEvent) {
+    public void uploadPhotosOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/uploadPhotos.fxml", actionEvent);
+
     }
 
     @javafx.fxml.FXML
-    public void promoteSponsorContentOnClick(ActionEvent actionEvent) {
+    public void promoteSponsorContentOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/promoteSponsorContent.fxml", actionEvent);
+
     }
 
     @javafx.fxml.FXML
-    public void publishDailyHighlightsOnClick(ActionEvent actionEvent) {
+    public void publishDailyHighlightsOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/publishDailyHighlights.fxml", actionEvent);
+
     }
 
     @javafx.fxml.FXML
-    public void coordinateWithSecurityOnClick(ActionEvent actionEvent) {
+    public void coordinateWithSecurityOnClick(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/coordinateWithSecurity.fxml", actionEvent);
+
     }
 
     @javafx.fxml.FXML

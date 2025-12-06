@@ -4,9 +4,9 @@ public class ProductVerification {
     private String stallNo;
     private String productName;
     private String officerStallNumber;
-    private String complianceStatus; // Compliant or Non-Compliant
+    private String complianceStatus;
 
-    // Constructor
+
     public ProductVerification(String stallNo, String productName, String officerStallNumber, String complianceStatus) {
         this.stallNo = stallNo;
         this.productName = productName;
@@ -14,11 +14,11 @@ public class ProductVerification {
         this.complianceStatus = complianceStatus;
     }
 
-    // Empty constructor
+
     public ProductVerification() {
     }
 
-    // Getters and Setters
+
     public String getStallNo() {
         return stallNo;
     }
@@ -51,7 +51,7 @@ public class ProductVerification {
         this.complianceStatus = complianceStatus;
     }
 
-    // toString method
+
     @Override
     public String toString() {
         return stallNo + " | " + productName + " | " + officerStallNumber + " | " + complianceStatus;
