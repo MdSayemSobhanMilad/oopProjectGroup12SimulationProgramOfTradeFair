@@ -12,7 +12,7 @@
       <Button layoutX="56.0" layoutY="228.0" mnemonicParsing="false" onAction="#respondIncidentOnClick" text="Respond to a Reported Incident" />
       <Button layoutX="56.0" layoutY="282.0" mnemonicParsing="false" onAction="#verifyMediaOnClick" text="Verify Credentials for a Media Promoter" />
       <Button layoutX="369.0" layoutY="124.0" mnemonicParsing="false" onAction="#manageSecurityOnClick" text="Manage the Security Watchlist (Add/Remove)" />
-      <Button layoutX="369.0" layoutY="175.0" mnemonicParsing="false" onAction="#exportIncidentOnClick" text="Generate an Incident Report" />
+      <Button layoutX="369.0" layoutY="175.0" mnemonicParsing="false" onAction="#exportIncidentOnClick" text="Generate and Export an Incident Report" />
       <Button layoutX="369.0" layoutY="228.0" mnemonicParsing="false" onAction="#reportMaintenanceIssueOnClick" text="Report a Maintenance Issue" />
       <Button layoutX="369.0" layoutY="282.0" mnemonicParsing="false" onAction="#logShiftOnClick" text="Log Start and End of Shift" />
       <Label layoutX="158.0" layoutY="31.0" text="The Security Personnel Dashboard" textAlignment="CENTER">
