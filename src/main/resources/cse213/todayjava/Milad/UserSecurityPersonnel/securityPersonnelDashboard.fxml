@@ -5,21 +5,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Milad.UserSecurityPersonnel.ControllerClasses.SecurityPersonnelDashboardController">
    <children>
-      <Button layoutX="56.0" layoutY="124.0" mnemonicParsing="false" text="Patrol a Designated Zone" />
-      <Button layoutX="56.0" layoutY="175.0" mnemonicParsing="false" text=" Validate Attendee Tickets at Entry Points" />
-      <Button layoutX="56.0" layoutY="228.0" mnemonicParsing="false" text="Respond to a Reported Incident" />
-      <Button layoutX="56.0" layoutY="282.0" mnemonicParsing="false" text="Verify Credentials for a Media Promoter" />
-      <Button layoutX="369.0" layoutY="124.0" mnemonicParsing="false" text="Manage the Security Watchlist (Add/Remove)" />
-      <Button layoutX="369.0" layoutY="175.0" mnemonicParsing="false" text="Generate and Export an Incident Report" />
-      <Button layoutX="369.0" layoutY="228.0" mnemonicParsing="false" text="Report a Maintenance Issue" />
-      <Button layoutX="369.0" layoutY="282.0" mnemonicParsing="false" text="Log Start and End of Shift" />
+      <Button layoutX="56.0" layoutY="124.0" mnemonicParsing="false" onAction="#patrolOnClick" text="Patrol a Designated Zone" />
+      <Button layoutX="56.0" layoutY="175.0" mnemonicParsing="false" onAction="#validOnClick" text=" Validate Attendee Tickets at Entry Points" />
+      <Button layoutX="56.0" layoutY="228.0" mnemonicParsing="false" onAction="#respondIncidentOnClick" text="Respond to a Reported Incident" />
+      <Button layoutX="56.0" layoutY="282.0" mnemonicParsing="false" onAction="#verifyMediaOnClick" text="Verify Credentials for a Media Promoter" />
+      <Button layoutX="369.0" layoutY="124.0" mnemonicParsing="false" onAction="#manageSecurityOnClick" text="Manage the Security Watchlist (Add/Remove)" />
+      <Button layoutX="369.0" layoutY="175.0" mnemonicParsing="false" onAction="#exportIncidentOnClick" text="Generate and Export an Incident Report" />
+      <Button layoutX="369.0" layoutY="228.0" mnemonicParsing="false" onAction="#reportMaintenanceIssueOnClick" text="Report a Maintenance Issue" />
+      <Button layoutX="369.0" layoutY="282.0" mnemonicParsing="false" onAction="#logShiftOnClick" text="Log Start and End of Shift" />
       <Label layoutX="158.0" layoutY="31.0" text="The Security Personnel Dashboard" textAlignment="CENTER">
          <font>
             <Font name="Barlow Condensed ExtraBold Italic" size="27.0" />
          </font>
       </Label>
+      <Button layoutX="570.0" layoutY="344.0" mnemonicParsing="false" onAction="#logoutOnClick" text="Log Out" />
    </children>
 </AnchorPane>
