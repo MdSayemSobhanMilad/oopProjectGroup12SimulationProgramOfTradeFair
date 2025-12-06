@@ -7,14 +7,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Ahad.UserStallOwner.ControllerClasses.StallOwnerDashboardController">
    <children>
-      <Button layoutX="94.0" layoutY="78.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Prepare Stall" />
-      <Button layoutX="94.0" layoutY="145.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="Manage Products" />
-      <Button layoutX="90.0" layoutY="259.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" text="Customer Discounts" />
-      <Button layoutX="387.0" layoutY="78.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="122.0" text="Sales Transactions" />
-      <Button layoutX="395.0" layoutY="137.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Maintain Stall" />
-      <Button layoutX="395.0" layoutY="200.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Safety Protocols" />
-      <Button layoutX="94.0" layoutY="196.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="106.0" text="Product Info" />
-      <Button layoutX="387.0" layoutY="259.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="132.0" text="Business Networking" />
+      <Button layoutX="94.0" layoutY="78.0" mnemonicParsing="false" onAction="#prepareStall" prefHeight="34.0" prefWidth="106.0" text="Prepare Stall" />
+      <Button layoutX="94.0" layoutY="145.0" mnemonicParsing="false" onAction="#manageProductOnaction" prefHeight="34.0" prefWidth="114.0" text="Manage Products" />
+      <Button layoutX="90.0" layoutY="259.0" mnemonicParsing="false" onAction="#customerDiscountOnaction" prefHeight="34.0" prefWidth="122.0" text="Customer Discounts" />
+      <Button layoutX="387.0" layoutY="78.0" mnemonicParsing="false" onAction="#salesTransactionsOnaction" prefHeight="34.0" prefWidth="122.0" text="Sales Transactions" />
+      <Button layoutX="395.0" layoutY="137.0" mnemonicParsing="false" onAction="#maintainStallOnaction" prefHeight="34.0" prefWidth="106.0" text="Maintain Stall" />
+      <Button layoutX="395.0" layoutY="200.0" mnemonicParsing="false" onAction="#safetySecurityOnaction" prefHeight="34.0" prefWidth="106.0" text="Safety Protocols" />
+      <Button layoutX="94.0" layoutY="196.0" mnemonicParsing="false" onAction="#productInfoOnaction" prefHeight="42.0" prefWidth="106.0" text="Product Info" />
+      <Button layoutX="387.0" layoutY="259.0" mnemonicParsing="false" onAction="#businessNetworkingOnaction" prefHeight="34.0" prefWidth="132.0" text="Business Networking" />
       <Label layoutX="208.0" layoutY="14.0" prefHeight="42.0" prefWidth="206.0" text="Stall Owner Dashboard">
          <font>
             <Font size="19.0" />

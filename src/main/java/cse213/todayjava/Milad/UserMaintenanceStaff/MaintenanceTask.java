@@ -1,35 +1,32 @@
 package cse213.todayjava.Milad.UserMaintenanceStaff;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 public class MaintenanceTask {
     private String taskId;
     private String taskType;
     private String description;
-    private String priority;
+
     private String status;
-    private String reportedBy;
-    private String assignedTo;
-    private LocalDateTime reportedTime;
-    private LocalDateTime completedTime;
-    private String completionPhoto;
+//    private String reportedBy;
+//    private String assignedTo;
+    private LocalDate reportedTime;
+    private LocalDate completedTime;
+
 
     public MaintenanceTask() {
     }
 
-    public MaintenanceTask(String taskId, String taskType, String description, String priority, String status,
-                           String reportedBy, String assignedTo, LocalDateTime reportedTime) {
+    public MaintenanceTask(String taskId, String taskType, String description, String status, LocalDate reportedTime, LocalDate completedTime) {
         this.taskId = taskId;
         this.taskType = taskType;
         this.description = description;
-        this.priority = priority;
         this.status = status;
-        this.reportedBy = reportedBy;
-        this.assignedTo = assignedTo;
         this.reportedTime = reportedTime;
+        this.completedTime = completedTime;
     }
 
-    // Getters and Setters
     public String getTaskId() {
         return taskId;
     }
@@ -54,14 +51,6 @@ public class MaintenanceTask {
         this.description = description;
     }
 
-    public String getPriority() {
-        return priority;
-    }
-
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -70,82 +59,41 @@ public class MaintenanceTask {
         this.status = status;
     }
 
-    public String getReportedBy() {
-        return reportedBy;
-    }
-
-    public void setReportedBy(String reportedBy) {
-        this.reportedBy = reportedBy;
-    }
-
-    public String getAssignedTo() {
-        return assignedTo;
-    }
-
-    public void setAssignedTo(String assignedTo) {
-        this.assignedTo = assignedTo;
-    }
-
-    public LocalDateTime getReportedTime() {
+    public LocalDate getReportedTime() {
         return reportedTime;
     }
 
-    public void setReportedTime(LocalDateTime reportedTime) {
+    public void setReportedTime(LocalDate reportedTime) {
         this.reportedTime = reportedTime;
     }
 
-    public LocalDateTime getCompletedTime() {
+    public LocalDate getCompletedTime() {
         return completedTime;
     }
 
-    public void setCompletedTime(LocalDateTime completedTime) {
+    public void setCompletedTime(LocalDate completedTime) {
         this.completedTime = completedTime;
     }
 
-    public String getCompletionPhoto() {
-        return completionPhoto;
-    }
-
-    public void setCompletionPhoto(String completionPhoto) {
-        this.completionPhoto = completionPhoto;
+    @Override
+    public String toString() {
+        return
+                "taskId='" + taskId + '\'' +
+                ", taskType='" + taskType + '\'' +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", reportedTime=" + reportedTime +
+                ", completedTime=" + completedTime;
     }
 
     // Methods
     public boolean updateStatus(String newStatus) {
         this.status = newStatus;
         if ("COMPLETED".equals(newStatus)) {
-            this.completedTime = LocalDateTime.now();
+            this.completedTime = LocalDate.now();
         }
         System.out.println("Task " + taskId + " status updated to: " + newStatus);
         return true;
     }
 
-    public boolean assignTask(String staffId) {
-        this.assignedTo = staffId;
-        System.out.println("Task " + taskId + " assigned to staff: " + staffId);
-        return true;
-    }
-
-    public boolean markAsCompleted(byte[] photo) {
-        this.status = "COMPLETED";
-        this.completedTime = LocalDateTime.now();
-        this.completionPhoto = "photo_reference"; // Store photo reference
-        System.out.println("Task " + taskId + " marked as completed");
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "MaintenanceTask{" +
-                "taskId='" + taskId + '\'' +
-                ", taskType='" + taskType + '\'' +
-                ", description='" + description + '\'' +
-                ", priority='" + priority + '\'' +
-                ", status='" + status + '\'' +
-                ", reportedBy='" + reportedBy + '\'' +
-                ", assignedTo='" + assignedTo + '\'' +
-                ", reportedTime=" + reportedTime +
-                ", completedTime=" + completedTime +
-                '}';
-    }
 }
