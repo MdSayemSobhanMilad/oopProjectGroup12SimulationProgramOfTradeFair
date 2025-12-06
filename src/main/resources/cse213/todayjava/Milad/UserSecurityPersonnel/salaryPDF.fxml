@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cse213.todayjava.Milad.UserSecurityPersonnel.ControllerClasses.SalaryPDFController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="58.0" layoutY="64.0" text="Start of the Month: " />
+        <Label layoutX="58.0" layoutY="102.0" text="Start of the Month: " />
+        <Label fx:id="errorSuccessLabel" layoutX="51.0" layoutY="167.0" prefHeight="18.0" prefWidth="432.0" textFill="#b10a0a" />
+        <DatePicker fx:id="startMonthDatePicker" layoutX="195.0" layoutY="60.0" />
+        <DatePicker fx:id="endMonthDatePicker" layoutX="195.0" layoutY="98.0" />
+        <Button layoutX="51.0" layoutY="14.0" mnemonicParsing="false" onAction="#backClick" text="back" />
+        <Button layoutX="58.0" layoutY="200.0" mnemonicParsing="false" onAction="#salaryOnClick" text="Count Salary" />
+        <Button layoutX="390.0" layoutY="200.0" mnemonicParsing="false" onAction="#pdfOnClick" text="Download PDF" />
+        <TextArea fx:id="salaryTA" layoutX="54.0" layoutY="250.0" prefHeight="106.0" prefWidth="432.0" />
+        <Label layoutX="201.0" layoutY="14.0" text="Report Generation">
+            <font>
+                <Font name="Book Antiqua Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="58.0" layoutY="139.0" text="Absence: " />
+        <TextField fx:id="absenceTextField" layoutX="196.0" layoutY="135.0" prefHeight="26.0" prefWidth="169.0" />
+    </children>
+</AnchorPane>

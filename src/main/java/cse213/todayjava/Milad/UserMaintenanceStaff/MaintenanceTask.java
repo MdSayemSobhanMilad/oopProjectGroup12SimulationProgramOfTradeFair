@@ -9,8 +9,6 @@ public class MaintenanceTask {
     private String description;
 
     private String status;
-//    private String reportedBy;
-//    private String assignedTo;
     private LocalDate reportedTime;
     private LocalDate completedTime;
 
