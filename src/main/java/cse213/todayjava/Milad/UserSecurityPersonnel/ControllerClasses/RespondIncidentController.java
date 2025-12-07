@@ -99,7 +99,7 @@ public class RespondIncidentController {
 
     @FXML
     public void backClick(ActionEvent actionEvent) throws IOException {
-        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserSecurityPersonnel/ControllerClasses/SecurityPersonnelDashboardController.java", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserSecurityPersonnel/securityPersonnelDashboard.fxml", actionEvent);
     }
 
     @FXML
