@@ -1,6 +1,6 @@
-package cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses;
+package cse213.todayjava.Milad.UserSecurityPersonnel.ControllerClasses;
 
-import cse213.todayjava.Milad.UserMaintenanceStaff.TaskLog;
+import cse213.todayjava.Milad.UserSecurityPersonnel.TaskLog;
 import cse213.todayjava.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -45,10 +45,10 @@ public class LogCompleteController
         presentStatusColoumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         TaskLog log1 = new TaskLog("L001", "STF101", LocalDate.of(2025, 12, 1), "Checked all equipment in Zone A", "Present");
-        TaskLog log2 = new TaskLog("L002", "STF102", LocalDate.of(2025, 12, 2),  "Reviewed maintenance requests", "Absent");
+        TaskLog log2 = new TaskLog("L002", "STF102", LocalDate.of(2025, 12, 2),  "Reviewed security requests", "Absent");
         TaskLog log3 = new TaskLog("L003", "STF103", LocalDate.of(2025, 12, 3),  "Completed routine inspection for HVAC", "Present");
-        TaskLog log4 = new TaskLog("L004", "STF104", LocalDate.of(2025, 12, 4),  "Updated inventory for spare parts", "Present");
-        TaskLog log5 = new TaskLog("L005", "STF105", LocalDate.of(2025, 12, 5),  "Filed repair report for generator malfunction", "Absent");
+        TaskLog log4 = new TaskLog("L004", "STF104", LocalDate.of(2025, 12, 4),  "Updated previous irregular security issues", "Present");
+        TaskLog log5 = new TaskLog("L005", "STF105", LocalDate.of(2025, 12, 5),  "Filed thief detection report", "Absent");
 
         tasks.add(log1);
         tasks.add(log2);
@@ -124,6 +124,6 @@ public class LogCompleteController
 
     @javafx.fxml.FXML
     public void backOnClick(ActionEvent actionEvent) throws IOException {
-        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/maintenanceDashboard.fxml", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserSecurityPersonnel/securityPersonnelDashboard.fxml", actionEvent);
     }
 }

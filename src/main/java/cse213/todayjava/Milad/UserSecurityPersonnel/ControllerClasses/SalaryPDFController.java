@@ -1,4 +1,4 @@
-package cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses;
+package cse213.todayjava.Milad.UserSecurityPersonnel.ControllerClasses;
 
 import cse213.todayjava.Milad.UserMaintenanceStaff.ReportParameters;
 import cse213.todayjava.SceneSwitcher;
@@ -24,7 +24,7 @@ import java.io.File;
 import java.io.File;
 import java.io.IOException;
 
-public class ReportController
+public class SalaryPDFController
 {
     @javafx.fxml.FXML
     private Label errorSuccessLabel;
@@ -43,7 +43,7 @@ public class ReportController
 
     @javafx.fxml.FXML
     public void backClick(ActionEvent actionEvent) throws IOException {
-        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/maintenanceDashboard.fxml", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserSecurityPersonnel/securityPersonnelDashboard.fxml", actionEvent);
     }
 
     @javafx.fxml.FXML
@@ -81,7 +81,7 @@ public class ReportController
                 new FileChooser.ExtensionFilter("PDF Document", "*.pdf")
         );
 
-        String defaultFileName = "Maintenance_Report_" +
+        String defaultFileName = "Salary_Report_" +
                 startMonthDatePicker.getValue().getMonth().toString() + "_" +
                 startMonthDatePicker.getValue().getYear() + ".pdf";
         fileChooser.setInitialFileName(defaultFileName);
@@ -96,7 +96,7 @@ public class ReportController
             document.open();
 
 
-            document.add(new Paragraph("Maintenance Staff Monthly Report"));
+            document.add(new Paragraph("Security Personnel Monthly Salary Report"));
             document.add(new Paragraph(" "));
 
 

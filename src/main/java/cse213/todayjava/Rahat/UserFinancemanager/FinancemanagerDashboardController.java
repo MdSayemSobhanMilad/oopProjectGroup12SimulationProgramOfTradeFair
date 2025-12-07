@@ -1,6 +1,7 @@
 package cse213.todayjava.Rahat.UserFinancemanager;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 public class FinancemanagerDashboardController {
 
@@ -38,8 +39,6 @@ public class FinancemanagerDashboardController {
     void revenuerecordButton(ActionEvent event) {
 
     }
-
-
 
     @FXML
     void trackvendorcontractButton(ActionEvent event) {

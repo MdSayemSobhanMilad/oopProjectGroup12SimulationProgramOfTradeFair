@@ -5,7 +5,11 @@ module cse213.todayjava {
     requires javafx.graphics;
     requires jdk.jfr;
     requires java.desktop;
+<<<<<<< HEAD
     requires cse213.todayjava;
+=======
+    requires com.github.librepdf.openpdf;
+>>>>>>> 7d86c473db70907c735dfb2aa7d2000658d46bfd
 
 
     exports cse213.todayjava;
@@ -41,8 +45,8 @@ module cse213.todayjava {
 
     exports cse213.todayjava.Rahat.UserVisitor;
     opens cse213.todayjava.Rahat.UserVisitor to javafx.fxml;
-    exports cse213.todayjava.Rahat.UserFinanceManager;
-    opens cse213.todayjava.Rahat.UserFinanceManager to javafx.fxml;
+    exports cse213.todayjava.Rahat.UserFinancemanager;
+    opens cse213.todayjava.Rahat.UserFinancemanager to javafx.fxml;
 
 
 

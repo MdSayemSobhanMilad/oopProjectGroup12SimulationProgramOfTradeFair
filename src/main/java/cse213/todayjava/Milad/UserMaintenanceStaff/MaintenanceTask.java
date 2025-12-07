@@ -9,8 +9,6 @@ public class MaintenanceTask {
     private String description;
 
     private String status;
-//    private String reportedBy;
-//    private String assignedTo;
     private LocalDate reportedTime;
     private LocalDate completedTime;
 
@@ -86,14 +84,5 @@ public class MaintenanceTask {
                 ", completedTime=" + completedTime;
     }
 
-    // Methods
-    public boolean updateStatus(String newStatus) {
-        this.status = newStatus;
-        if ("COMPLETED".equals(newStatus)) {
-            this.completedTime = LocalDate.now();
-        }
-        System.out.println("Task " + taskId + " status updated to: " + newStatus);
-        return true;
-    }
 
 }

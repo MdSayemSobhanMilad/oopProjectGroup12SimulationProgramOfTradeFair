@@ -1,76 +1,60 @@
 package cse213.todayjava.Milad.UserMaintenanceStaff;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class ReportParameters {
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private String reportType;
-    private String[] includedSections;
+    private LocalDate startMonth;
+    private LocalDate endMonth;
+    private int absence;
 
     public ReportParameters() {
     }
 
-    public ReportParameters(LocalDateTime startDate, LocalDateTime endDate, String reportType, String[] includedSections) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.reportType = reportType;
-        this.includedSections = includedSections;
-    }
-
-    // Getters and Setters
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getReportType() {
-        return reportType;
-    }
-
-    public void setReportType(String reportType) {
-        this.reportType = reportType;
-    }
-
-    public String[] getIncludedSections() {
-        return includedSections;
-    }
-
-    public void setIncludedSections(String[] includedSections) {
-        this.includedSections = includedSections;
-    }
-
-    // Methods
-    public boolean validateParameters() {
-        if (startDate == null || endDate == null || reportType == null || reportType.isEmpty()) {
-            System.out.println("Report parameters validation failed: Missing required fields");
-            return false;
-        }
-        if (startDate.isAfter(endDate)) {
-            System.out.println("Report parameters validation failed: Start date cannot be after end date");
-            return false;
-        }
-        System.out.println("Report parameters validated successfully");
-        return true;
+    public ReportParameters(LocalDate startMonth, LocalDate endMonth, int absence) {
+        this.startMonth = startMonth;
+        this.endMonth = endMonth;
+        this.absence = absence;
     }
 
     @Override
     public String toString() {
         return "ReportParameters{" +
-                "startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", reportType='" + reportType + '\'' +
+                "startMonth=" + startMonth +
+                ", endMonth=" + endMonth +
+                ", absence=" + absence +
                 '}';
+    }
+
+    public LocalDate getStartMonth() {
+        return startMonth;
+    }
+
+    public void setStartMonth(LocalDate startMonth) {
+        this.startMonth = startMonth;
+    }
+
+    public LocalDate getEndMonth() {
+        return endMonth;
+    }
+
+    public void setEndMonth(LocalDate endMonth) {
+        this.endMonth = endMonth;
+    }
+
+    public int getAbsence() {
+        return absence;
+    }
+
+    public void setAbsence(int absence) {
+        this.absence = absence;
+    }
+
+    public int getSalary(){
+        int a = this.endMonth.getDayOfMonth();
+        int b = this.startMonth.getDayOfMonth();
+
+        int workingDay = a - b - absence;
+
+        return (workingDay * 1000);
     }
 }

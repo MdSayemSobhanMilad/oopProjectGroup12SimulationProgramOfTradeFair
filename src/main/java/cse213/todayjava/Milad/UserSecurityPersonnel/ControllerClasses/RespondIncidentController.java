@@ -1,6 +1,6 @@
-package cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses;
+package cse213.todayjava.Milad.UserSecurityPersonnel.ControllerClasses;
 
-import cse213.todayjava.Milad.UserMaintenanceStaff.MaintenanceReport;
+import cse213.todayjava.Milad.UserSecurityPersonnel.IncidentReport;
 import cse213.todayjava.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,27 +14,27 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepairController {
+public class RespondIncidentController {
 
     @FXML
-    private TableColumn<MaintenanceReport, LocalDate> generateDateTC;
+    private TableColumn<IncidentReport, LocalDate> generateDateTC;
 
     @FXML
-    private TableColumn<MaintenanceReport, String> statusTC;
+    private TableColumn<IncidentReport, String> statusTC;
 
     @FXML
-    private TableColumn<MaintenanceReport, String> reportTypeTC;
+    private TableColumn<IncidentReport, String> reportTypeTC;
 
     @FXML
-    private TableView<MaintenanceReport> repairTV;
+    private TableView<IncidentReport> repairTV;
 
     @FXML
-    private TableColumn<MaintenanceReport, String> generateByTC;
+    private TableColumn<IncidentReport, String> generateByTC;
 
     @FXML
-    private TableColumn<MaintenanceReport, String> repairIDTC;
+    private TableColumn<IncidentReport, String> repairIDTC;
 
-    List<MaintenanceReport> itemList = new ArrayList<>();
+    List<IncidentReport> itemList = new ArrayList<>();
 
     @FXML
     public void initialize() {
@@ -47,16 +47,16 @@ public class RepairController {
         statusTC.setCellValueFactory(new PropertyValueFactory<>("status"));
 
 
-        itemList.add(new MaintenanceReport("MR001", "Electrical Fault", LocalDate.of(2025, 1, 10), "Security Personnel", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR002", "Broken Stall Light", LocalDate.of(2025, 1, 11), "Vendor", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR003", "Water Leakage", LocalDate.of(2025, 1, 12), "Trade Fair Organizer", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR004", "Damaged Gate Lock", LocalDate.of(2025, 1, 13), "Security Personnel", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR005", "Sound System Issue", LocalDate.of(2025, 1, 14), "Event Manager", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR006", "Floor Damage", LocalDate.of(2025, 1, 15), "Vendor", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR007", "Air Cooling Failure", LocalDate.of(2025, 1, 16), "Maintenance Supervisor", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR008", "Broken Banner Stand", LocalDate.of(2025, 1, 17), "Marketing Staff", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR009", "CCTV Malfunction", LocalDate.of(2025, 1, 18), "Security Personnel", "Not Repaired"));
-        itemList.add(new MaintenanceReport("MR010", "Generator Problem", LocalDate.of(2025, 1, 19), "Technical Operator", "Not Repaired"));
+        itemList.add(new IncidentReport("MR001", "Thief Alert", LocalDate.of(2025, 1, 10), "Event Manager", "Not inspected"));
+        itemList.add(new IncidentReport("MR002", "Crowd Overload Problem", LocalDate.of(2025, 1, 11), "Vendor", "Not inspected"));
+        itemList.add(new IncidentReport("MR003", "Media Promoter Security need", LocalDate.of(2025, 1, 12), "Trade Fair Organizer", "Not inspected"));
+        itemList.add(new IncidentReport("MR004", "Unauthorized Access Attempt", LocalDate.of(2025, 1, 13), "Event Manager", "Not inspected"));
+        itemList.add(new IncidentReport("MR005", "Suspicious Activity Observed", LocalDate.of(2025, 1, 14), "Event Manager", "Not inspected"));
+        itemList.add(new IncidentReport("MR006", "Security Breach Detected", LocalDate.of(2025, 1, 15), "Vendor", "Not inspected"));
+        itemList.add(new IncidentReport("MR007", "Failed Security Equipment", LocalDate.of(2025, 1, 16), "Maintenance Supervisor", "Not inspected"));
+        itemList.add(new IncidentReport("MR008", "Prohibited Item Found", LocalDate.of(2025, 1, 17), "Marketing Staff", "Not inspected"));
+        itemList.add(new IncidentReport("MR009", "Security Camera Offline", LocalDate.of(2025, 1, 18), "Vendor", "Not inspected"));
+        itemList.add(new IncidentReport("MR010", "Fire Alarm Triggered", LocalDate.of(2025, 1, 19), "Technical Operator", "Not inspected"));
 
         repairTV.getItems().addAll(itemList);
     }
@@ -64,7 +64,7 @@ public class RepairController {
 
     @FXML
     public void doneRepairingRB(ActionEvent actionEvent) {
-        MaintenanceReport selected = repairTV.getSelectionModel().getSelectedItem();
+        IncidentReport selected = repairTV.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
             showAlert(Alert.AlertType.WARNING, "No Selection",
@@ -78,9 +78,9 @@ public class RepairController {
 
     @FXML
     public void loadDoneWorksClick(ActionEvent actionEvent) {
-        List<MaintenanceReport> filteredList = new ArrayList<>();
+        List<IncidentReport> filteredList = new ArrayList<>();
 
-        for (MaintenanceReport report : itemList) {
+        for (IncidentReport report : itemList) {
             if ("Done Repairing".equals(report.getStatus())) {
                 filteredList.add(report);
             }
@@ -99,7 +99,7 @@ public class RepairController {
 
     @FXML
     public void backClick(ActionEvent actionEvent) throws IOException {
-        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserMaintenanceStaff/maintenanceDashboard.fxml", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserSecurityPersonnel/ControllerClasses/SecurityPersonnelDashboardController.java", actionEvent);
     }
 
     @FXML

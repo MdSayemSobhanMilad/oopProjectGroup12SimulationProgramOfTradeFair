@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Rahat.UserFinancemanager.managepaymentController">
+   <children>
+      <Label layoutX="196.0" layoutY="14.0" prefHeight="29.0" prefWidth="107.0" text="Manage payment" />
+      <Label layoutX="25.0" layoutY="51.0" prefHeight="29.0" prefWidth="107.0" text="Transaction id" />
+      <Label layoutX="25.0" layoutY="93.0" prefHeight="29.0" prefWidth="107.0" text="Amount Paid" />
+      <Label layoutX="300.0" layoutY="51.0" prefHeight="29.0" prefWidth="107.0" text="Payment status" />
+      <TextField fx:id="amountpaidtextfield" layoutX="108.0" layoutY="95.0" />
+      <ComboBox fx:id="paymentstatusCombobox" layoutX="407.0" layoutY="53.0" prefWidth="150.0" />
+      <Button layoutX="304.0" layoutY="95.0" mnemonicParsing="false" onAction="#AddButton" text="Add" />
+      <Button layoutX="450.0" layoutY="95.0" mnemonicParsing="false" onAction="#ShowAllButton" text="ShowAll" />
+      <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackButton" text="Back" />
+      <TableView fx:id="tableview" layoutX="-1.0" layoutY="168.0" prefHeight="231.0" prefWidth="424.0">
+        <columns>
+          <TableColumn fx:id="Transactionidtablecolumn" prefWidth="165.99999487400055" text="Transaction id" />
+          <TableColumn fx:id="Amountpaidtablecolumn" prefWidth="129.3333282470703" text="Amount paid" />
+            <TableColumn fx:id="paymentstatustabklecolumn" prefWidth="129.3333282470703" text=" Payment status" />
+        </columns>
+      </TableView>
+      <TextField fx:id="transactionidtextfield1" layoutX="108.0" layoutY="53.0" />
+   </children>
+</AnchorPane>
