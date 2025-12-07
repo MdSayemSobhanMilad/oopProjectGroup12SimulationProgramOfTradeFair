@@ -68,15 +68,6 @@ public class planSheduleController {
     }
 
 
-
-
-
-
-
-
-
-
-
     @FXML
     public void UpdateButton(ActionEvent actionEvent) {
         Tableview.getItems().clear();

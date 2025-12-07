@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Rahat.UserFinancemanager.revenuerecordController">
+   <children>
+      <Label layoutX="168.0" prefHeight="49.0" prefWidth="183.0" text="Revenue Record">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="49.0" prefHeight="17.0" prefWidth="87.0" text="Transaction id" />
+      <Label layoutX="312.0" layoutY="49.0" prefHeight="17.0" prefWidth="77.0" text="Amount" />
+      <Label layoutX="31.0" layoutY="92.0" text="Revenue type" />
+      <TextField fx:id="transactionidTextfield" layoutX="127.0" layoutY="45.0" />
+      <TextField fx:id="amountTextfield" layoutX="373.0" layoutY="45.0" />
+      <ComboBox fx:id="revenuetypeCombobox" layoutX="127.0" layoutY="88.0" prefWidth="150.0" />
+      <Label layoutX="312.0" layoutY="92.0" prefHeight="17.0" prefWidth="77.0" text="Date" />
+      <DatePicker fx:id="datepicker" layoutX="383.0" layoutY="88.0" />
+      <Button layoutX="31.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBujtton" text="Back" />
+      <Button layoutX="149.0" layoutY="126.0" mnemonicParsing="false" onAction="#Addbutton" text="Add" />
+      <Button layoutX="312.0" layoutY="126.0" mnemonicParsing="false" onAction="#ShowAllButton" text="ShowAll" />
+      <TableView fx:id="tableview" layoutY="164.0" prefHeight="230.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="amounttablecolumn" prefWidth="158.0" text="Amount" />
+          <TableColumn fx:id="revenuetypetablecolumn" prefWidth="249.33334350585938" text="Revenue type" />
+            <TableColumn fx:id="datetablecolumn" prefWidth="192.00006103515625" text="Date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

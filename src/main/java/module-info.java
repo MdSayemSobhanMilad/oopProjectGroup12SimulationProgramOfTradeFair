@@ -5,6 +5,7 @@ module cse213.todayjava {
     requires javafx.graphics;
     requires jdk.jfr;
     requires java.desktop;
+    requires cse213.todayjava;
 
 
     exports cse213.todayjava;
@@ -14,8 +15,7 @@ module cse213.todayjava {
     opens cse213.todayjava.Milad.UserSecurityPersonnel to javafx.base;
     opens cse213.todayjava.Ahad.UserStallOwner to javafx.base;
     opens cse213.todayjava.Ahad.UserTicketCounterStaff to javafx.base;
-    opens cse213.todayjava.Rahat.UserVisitor to javafx.base;
-    opens cse213.todayjava.Rahat.UserFinanceManager to javafx.base;
+
 
 
     exports cse213.todayjava.Milad.UserMaintenanceStaff.ControllerClasses;
@@ -40,6 +40,10 @@ module cse213.todayjava {
     opens cse213.todayjava.Arabi.UserGovernmentOfficer to javafx.fxml;
 
     exports cse213.todayjava.Rahat.UserVisitor;
+    opens cse213.todayjava.Rahat.UserVisitor to javafx.fxml;
+    exports cse213.todayjava.Rahat.UserFinanceManager;
+    opens cse213.todayjava.Rahat.UserFinanceManager to javafx.fxml;
+
 
 
     exports cse213.todayjava.Milad.UserMaintenanceStaff;
