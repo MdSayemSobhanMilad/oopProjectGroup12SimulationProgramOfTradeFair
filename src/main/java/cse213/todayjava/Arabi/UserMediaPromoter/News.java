@@ -9,11 +9,6 @@ public class News {
     private Date publishDate;
     private String mediaPromoterId;
 
-<<<<<<< Updated upstream
-
-=======
-    // Constructor
->>>>>>> Stashed changes
     public News(String newsId, String title, String content, Date publishDate, String mediaPromoterId) {
         this.newsId = newsId;
         this.title = title;
@@ -22,17 +17,13 @@ public class News {
         this.mediaPromoterId = mediaPromoterId;
     }
 
-<<<<<<< Updated upstream
-
-    public News() {}
 
 
-=======
     // Default constructor
     public News() {}
 
     // Getters and Setters
->>>>>>> Stashed changes
+
     public String getNewsId() {
         return newsId;
     }
@@ -73,11 +64,11 @@ public class News {
         this.mediaPromoterId = mediaPromoterId;
     }
 
-<<<<<<< Updated upstream
 
-=======
+
+
     // Methods from UML
->>>>>>> Stashed changes
+
     public void publish() {
         System.out.println("News published: " + title);
     }
@@ -86,11 +77,7 @@ public class News {
         System.out.println("News edited: " + title);
     }
 
-<<<<<<< Updated upstream
 
-=======
-    // toString method
->>>>>>> Stashed changes
     @Override
     public String toString() {
         return "News{" +

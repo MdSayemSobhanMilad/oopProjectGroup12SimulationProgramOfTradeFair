@@ -1,9 +1,8 @@
 package cse213.todayjava.Arabi.UserMediaPromoter;
 
-<<<<<<< Updated upstream
+
 import cse213.todayjava.SceneSwitcher;
-=======
->>>>>>> Stashed changes
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,11 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-<<<<<<< Updated upstream
+
 
 import java.io.IOException;
-=======
->>>>>>> Stashed changes
+
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -96,12 +94,11 @@ public class User7Goal1ControllerClass implements Initializable {
         descriptionTextfield.clear();
         publishingDatePicker.setValue(null);
     }
-<<<<<<< Updated upstream
+
 
     @javafx.fxml.FXML
     public void backOnClick(ActionEvent actionEvent) throws IOException {
         SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/mediaPromoterDashboard.fxml", actionEvent);
     }
-=======
->>>>>>> Stashed changes
+
 }
