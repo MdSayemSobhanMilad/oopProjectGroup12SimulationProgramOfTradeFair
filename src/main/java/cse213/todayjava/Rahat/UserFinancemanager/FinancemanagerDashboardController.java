@@ -21,12 +21,12 @@ public class FinancemanagerDashboardController {
 
     @FXML
     void generatefinancialreportButton(ActionEvent event) throws IOException{
-//        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/generatefinancialreport.fxml", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/generatefinancialreport.fxml", event);
     }
 
     @FXML
     void managepaymentButton(ActionEvent event) throws IOException {
-//        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/monitorbudget.fxml", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/monitorbudget.fxml", event);
     }
 
     @FXML
@@ -36,12 +36,12 @@ public class FinancemanagerDashboardController {
 
     @FXML
     void monitorbudgetButton(ActionEvent event) throws IOException {
-//        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/FinancemanagerDashboard.fxml", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/FinancemanagerDashboard.fxml", event);
     }
 
     @FXML
     void revenuerecordButton(ActionEvent event) throws IOException {
-//        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/revenuerecord.fxml", actionEvent);
+        SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/revenuerecord.fxml", event);
     }
 
     @FXML

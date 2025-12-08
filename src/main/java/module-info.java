@@ -17,8 +17,8 @@ module cse213.todayjava {
     opens cse213.todayjava.Milad.UserSecurityPersonnel to javafx.base;
     opens cse213.todayjava.Ahad.UserStallOwner to javafx.base;
     opens cse213.todayjava.Ahad.UserTicketCounterStaff to javafx.base;
-    opens cse213.todayjava.Rahat.UserVisitor to javafx.base;
-    opens cse213.todayjava.Rahat.UserFinanceManager to javafx.base;
+
+
 
 
 
@@ -43,9 +43,11 @@ module cse213.todayjava {
     exports cse213.todayjava.Arabi.UserGovernmentOfficer;
     opens cse213.todayjava.Arabi.UserGovernmentOfficer to javafx.fxml;
 
-    exports cse213.todayjava.Rahat.UserVisitor;
-
 
     exports cse213.todayjava.Milad.UserMaintenanceStaff;
 
+    opens cse213.todayjava.Rahat.UserFinancemanager to javafx.fxml;
+    exports cse213.todayjava.Rahat.UserFinancemanager;
+    opens cse213.todayjava.Rahat.UserVisitor to javafx.fxml;
+    exports cse213.todayjava.Rahat.UserVisitor;
 }
