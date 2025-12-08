@@ -5,7 +5,7 @@ public class TaxCollection {
     private String pending;
     private String status;
 
-    
+
     public TaxCollection(String totalTax, String pending, String status) {
         this.totalTax = totalTax;
         this.pending = pending;

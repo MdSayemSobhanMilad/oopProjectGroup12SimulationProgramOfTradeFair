@@ -5,7 +5,9 @@ module cse213.todayjava {
     requires javafx.graphics;
     requires jdk.jfr;
     requires java.desktop;
+
     requires javafx.base;
+    requires com.github.librepdf.openpdf;
 
 
 

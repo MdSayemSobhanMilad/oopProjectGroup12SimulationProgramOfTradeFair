@@ -1,77 +1,85 @@
 package cse213.todayjava.Milad.UserSecurityPersonnel;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.util.List;
 
 public class PatrolManagement {
-    private String patrolId;
-    private String securityPersonnelId;
-    private String zoneId;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String taskId;
+    private String taskType;
+    private String description;
     private String status;
+    private LocalDate reportedTime;
+    private LocalDate completedTime;
 
-    // Constructors
     public PatrolManagement() {}
 
-    public PatrolManagement(String patrolId, String securityPersonnelId, String zoneId) {
-        this.patrolId = patrolId;
-        this.securityPersonnelId = securityPersonnelId;
-        this.zoneId = zoneId;
-        this.status = "PENDING";
+    public PatrolManagement(String taskId, String taskType, String description, String status, LocalDate reportedTime, LocalDate completedTime) {
+        this.taskId = taskId;
+        this.taskType = taskType;
+        this.description = description;
+        this.status = status;
+        this.reportedTime = reportedTime;
+        this.completedTime = completedTime;
     }
 
-    // Getters and Setters
-    public String getPatrolId() { return patrolId; }
-    public void setPatrolId(String patrolId) { this.patrolId = patrolId; }
-
-    public String getSecurityPersonnelId() { return securityPersonnelId; }
-    public void setSecurityPersonnelId(String securityPersonnelId) { this.securityPersonnelId = securityPersonnelId; }
-
-    public String getZoneId() { return zoneId; }
-    public void setZoneId(String zoneId) { this.zoneId = zoneId; }
-
-    public LocalDateTime getStartTime() { return startTime; }
-    public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
-
-    public LocalDateTime getEndTime() { return endTime; }
-    public void setEndTime(LocalDateTime endTime) { this.endTime = endTime; }
-
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-
-    // Methods
-    public Boolean recordPatrolStart(String zoneId) {
-        this.zoneId = zoneId;
-        this.startTime = LocalDateTime.now();
-        this.status = "IN_PROGRESS";
-        System.out.println("Patrol " + patrolId + " started in zone: " + zoneId);
-        return true;
+    public String getTaskId() {
+        return taskId;
     }
 
-    public Boolean recordPatrolCompletion() {
-        this.endTime = LocalDateTime.now();
-        this.status = "COMPLETED";
-        System.out.println("Patrol " + patrolId + " completed. Duration: " +
-                Duration.between(startTime, endTime).toMinutes() + " minutes");
-        return true;
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 
-    public List<PatrolManagement> getPatrolHistory(String securityPersonnelId) {
-        System.out.println("Retrieving patrol history for security personnel: " + securityPersonnelId);
-        return List.of(this);
+    public String getTaskType() {
+        return taskType;
+    }
+
+    public void setTaskType(String taskType) {
+        this.taskType = taskType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDate getReportedTime() {
+        return reportedTime;
+    }
+
+    public void setReportedTime(LocalDate reportedTime) {
+        this.reportedTime = reportedTime;
+    }
+
+    public LocalDate getCompletedTime() {
+        return completedTime;
+    }
+
+    public void setCompletedTime(LocalDate completedTime) {
+        this.completedTime = completedTime;
     }
 
     @Override
     public String toString() {
-        return "PatrolManagement{" +
-                "patrolId='" + patrolId + '\'' +
-                ", securityPersonnelId='" + securityPersonnelId + '\'' +
-                ", zoneId='" + zoneId + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", status='" + status + '\'' +
-                '}';
+        return
+                "taskId = " + taskId +
+                ", taskType = " + taskType +
+                ", description= " + description +
+                ", status = " + status +
+                ", reportedTime = " + reportedTime +
+                ", completedTime = " + completedTime;
     }
 }

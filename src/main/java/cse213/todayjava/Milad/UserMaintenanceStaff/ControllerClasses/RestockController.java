@@ -228,14 +228,6 @@ public class RestockController
         return true;
     }
 
-    private void clearErrorStyles() {
-        itemComboBox.setStyle("");
-        itemidTextField.setStyle("");
-        locationTextField.setStyle("");
-        currentStock.setStyle("");
-        restockDatePicker.setStyle("");
-        successMessegeLabel.setStyle("");
-    }
 
     @javafx.fxml.FXML
     public void handleBack(ActionEvent actionEvent) throws IOException {
