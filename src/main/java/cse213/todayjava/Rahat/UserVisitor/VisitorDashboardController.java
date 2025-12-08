@@ -41,24 +41,60 @@ public class VisitorDashboardController
     }
 
     @javafx.fxml.FXML
-    public void trackPurchaseButton(ActionEvent actionEvent) {
+    public void trackPurchaseButton(ActionEvent event)  throws IOException {
+        Parent scene2Parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cse213/todayjava/Rahat/UserVisitor/trackpurchase.fxml")));
+        Scene scene2 = new Scene(scene2Parent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Trackpurchase");
+        window.setScene(scene2);
+        window.show();
     }
 
-    @javafx.fxml.FXML
-    public void WishlistButton(ActionEvent actionEvent) {
-    }
 
     @javafx.fxml.FXML
-    public void SearchProductButton(ActionEvent actionEvent) {
+    public void WishlistButton(ActionEvent event)  throws IOException {
+        Parent scene2Parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cse213/todayjava/Rahat/UserVisitor/wishlist.fxml")));
+        Scene scene2 = new Scene(scene2Parent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Wishlist");
+        window.setScene(scene2);
+        window.show();
     }
 
-    @javafx.fxml.FXML
-    public void requestAssistanceButton(ActionEvent actionEvent) {
-    }
 
     @javafx.fxml.FXML
-    public void feedbackButton(ActionEvent actionEvent) {
+    public void SearchProductButton(ActionEvent event) throws IOException {
+        Parent scene2Parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cse213/todayjava/Rahat/UserVisitor/searchproduct.fxml")));
+        Scene scene2 = new Scene(scene2Parent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Searchproduct");
+        window.setScene(scene2);
+        window.show();
     }
+
+
+    @javafx.fxml.FXML
+    public void requestAssistanceButton(ActionEvent event)  throws IOException {
+        Parent scene2Parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cse213/todayjava/Rahat/UserVisitor/requestassistance.fxml")));
+        Scene scene2 = new Scene(scene2Parent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Requestassistance");
+        window.setScene(scene2);
+        window.show();
+    }
+
+
+    @javafx.fxml.FXML
+    public void feedbackButton(ActionEvent event) throws IOException {
+        Parent scene2Parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cse213/todayjava/Rahat/UserVisitor/Feedback.fxml")));
+        Scene scene2 = new Scene(scene2Parent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setTitle("Feedback");
+        window.setScene(scene2);
+        window.show();
+    }
+
+
 
 
     @javafx.fxml.FXML

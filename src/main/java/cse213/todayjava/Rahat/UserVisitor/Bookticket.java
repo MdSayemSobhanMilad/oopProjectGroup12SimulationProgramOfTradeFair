@@ -5,8 +5,8 @@ import java.time.LocalDate;
 
 public class Bookticket implements Serializable {
     private String Name;
-    private Integer phoneNumber;
-    private Integer TicketId;
+    private int phoneNumber;
+    private int TicketId;
     private String Gender;
     private LocalDate Date;
 

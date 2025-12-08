@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse213.todayjava.Rahat.UserVisitor.requestassistanceController">
+   <children>
+      <Label layoutX="170.0" layoutY="7.0" prefHeight="29.0" prefWidth="243.0" text="Request Assistance">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button layoutX="22.0" layoutY="13.0" mnemonicParsing="false" onAction="#BackButton" text="Back" />
+      <Label layoutX="22.0" layoutY="56.0" prefHeight="38.0" prefWidth="81.0" text="Visitor Id">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="visitoridTextfield" layoutX="104.0" layoutY="62.0" />
+      <Label layoutX="273.0" layoutY="56.0" prefHeight="38.0" prefWidth="150.0" text="Type Of Assistance">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="typeofassistanceCombobox" layoutX="431.0" layoutY="62.0" prefWidth="150.0" />
+      <TableView fx:id="tableview" layoutX="-1.0" layoutY="136.0" prefHeight="265.0" prefWidth="444.0">
+        <columns>
+          <TableColumn fx:id="visitoridColumn" prefWidth="219.33333837985992" text="Visitor Id" />
+          <TableColumn fx:id="typeofassistanceColumn" prefWidth="223.33335876464844" text="Type of Assistance" />
+        </columns>
+      </TableView>
+      <Button layoutX="468.0" layoutY="156.0" mnemonicParsing="false" onAction="#sendreqButton" prefHeight="25.0" prefWidth="99.0" text="Send Request" />
+      <Button layoutX="462.0" layoutY="239.0" mnemonicParsing="false" onAction="#showallButton" prefHeight="38.0" prefWidth="111.0" text="Show All Request" />
+   </children>
+</AnchorPane>
