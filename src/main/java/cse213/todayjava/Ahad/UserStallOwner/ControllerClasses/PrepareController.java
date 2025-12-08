@@ -33,7 +33,7 @@ public class PrepareController {
         stall = new PrepareStall();
 
 
-        successAndAllertMessage.setText("");
+
     }
 
     @FXML
