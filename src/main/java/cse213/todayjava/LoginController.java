@@ -33,26 +33,16 @@ public class LoginController
             SceneSwitcher.switchTo("/cse213/todayjava/Milad/UserSecurityPersonnel/securityPersonnelDashboard.fxml", actionEvent);
         } else if (username.equals("Ahad") && password.equals("2222")){
             SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserStallOwner/stallOwnerDashboard.fxml", actionEvent);
-
-
-
-
         }else if (username.equals("oop") && password.equals("fail")){
             SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserVisitor/visitorDashboard.fxml", actionEvent);
         }else if (username.equals("MD") && password.equals("1234")) {
             SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/ticketCounterStaffDashboard.fxml", actionEvent);
         }else if (username.equals("go") && password.equals("1234")) {
             SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserGovernmentOfficer/governmentOfficerDashboard.fxml", actionEvent);
-
-        }
-        else if (username.equals("me") && password.equals("1234")) {
+        } else if (username.equals("me") && password.equals("1234")) {
             SceneSwitcher.switchTo("/cse213/todayjava/Arabi/UserMediaPromoter/mediaPromoterDashboard.fxml", actionEvent);
-
-
         }else if (username.equals("oop") && password.equals("1234")){
             SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserVisitor/visitorDashboard.fxml", actionEvent);
-        }else if (username.equals("MD") && password.equals("1234")) {
-            SceneSwitcher.switchTo("/cse213/todayjava/Ahad/UserTicketCounterStaff/ticketCounterStaffDashboard.fxml", actionEvent);
         }else if (username.equals("oop2") && password.equals("1234")) {
             SceneSwitcher.switchTo("/cse213/todayjava/Rahat/UserFinancemanager/FinancemanagerDashboard.fxml", actionEvent);}
 
