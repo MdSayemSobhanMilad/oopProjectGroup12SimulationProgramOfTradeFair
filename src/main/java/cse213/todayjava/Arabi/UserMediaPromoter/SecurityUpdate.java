@@ -22,7 +22,7 @@ public class SecurityUpdate {
 
     public SecurityUpdate() {
     }
-    
+
 
     // Getters and Setters
 
