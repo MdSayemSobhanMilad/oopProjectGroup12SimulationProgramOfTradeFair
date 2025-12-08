@@ -75,7 +75,11 @@ public class MediaPromoter extends User implements Serializable {
         return newsTitle + " - " + reporterName + " (" + publishingDate + ")";
     }
 
+<<<<<<< Updated upstream
 
+=======
+    // Save data to bin file
+>>>>>>> Stashed changes
     public static void saveNewsToFile(MediaPromoter news) {
         try {
             java.io.File file = new java.io.File("news_data.bin");
@@ -85,7 +89,11 @@ public class MediaPromoter extends User implements Serializable {
                 oos = new java.io.ObjectOutputStream(
                         new java.io.FileOutputStream("news_data.bin", true)) {
                     protected void writeStreamHeader() {
+<<<<<<< Updated upstream
 
+=======
+                        // Empty override for appending
+>>>>>>> Stashed changes
                     }
                 };
             } else {
@@ -100,7 +108,11 @@ public class MediaPromoter extends User implements Serializable {
         }
     }
 
+<<<<<<< Updated upstream
 
+=======
+    // Read all data from bin file
+>>>>>>> Stashed changes
     public static java.util.ArrayList<MediaPromoter> loadNewsFromFile() {
         java.util.ArrayList<MediaPromoter> newsList = new java.util.ArrayList<>();
         try {

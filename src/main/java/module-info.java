@@ -11,6 +11,7 @@ module cse213.todayjava {
 
 
 
+<<<<<<< Updated upstream
     exports cse213.todayjava;
     opens cse213.todayjava to javafx.fxml;
 
@@ -48,4 +49,11 @@ module cse213.todayjava {
 
 
     exports cse213.todayjava.Milad.UserMaintenanceStaff;
+=======
+    opens cse213.todayjava.Arabi.UserMediaPromoter to javafx.base, javafx.fxml;
+    opens cse213.todayjava to javafx.fxml;
+
+    exports cse213.todayjava;
+    exports cse213.todayjava.Arabi.UserMediaPromoter;
+>>>>>>> Stashed changes
 }

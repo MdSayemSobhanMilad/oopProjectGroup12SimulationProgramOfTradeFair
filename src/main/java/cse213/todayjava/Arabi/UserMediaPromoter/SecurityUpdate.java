@@ -9,7 +9,11 @@ public class SecurityUpdate {
     private Date timestamp;
     private String priority;
 
+<<<<<<< Updated upstream
 
+=======
+    // Constructor
+>>>>>>> Stashed changes
     public SecurityUpdate(String updateId, String type, String description, Date timestamp, String priority) {
         this.updateId = updateId;
         this.type = type;
@@ -18,11 +22,19 @@ public class SecurityUpdate {
         this.priority = priority;
     }
 
+<<<<<<< Updated upstream
 
     public SecurityUpdate() {
     }
 
 
+=======
+    // Default constructor
+    public SecurityUpdate() {
+    }
+
+    // Getters and Setters
+>>>>>>> Stashed changes
     public String getUpdateId() {
         return updateId;
     }
@@ -72,7 +84,11 @@ public class SecurityUpdate {
         System.out.println("Broadcasting security alert: " + description + " [Priority: " + priority + "]");
     }
 
+<<<<<<< Updated upstream
 
+=======
+    // toString method
+>>>>>>> Stashed changes
     @Override
     public String toString() {
         return "SecurityUpdate{" +
